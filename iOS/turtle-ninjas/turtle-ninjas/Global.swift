@@ -16,6 +16,8 @@ enum HTTPTYPE {
 
 public class Global {
 
+    public var base_url = "http://turtle_ninjas.herokuapp.com"
+    
     func request(url: String, params: Dictionary<String,AnyObject>?, headers: Dictionary<String,String>?, type: HTTPTYPE, completion:(JSON) -> Void)  {
         
         dispatch_async(dispatch_get_main_queue(), {

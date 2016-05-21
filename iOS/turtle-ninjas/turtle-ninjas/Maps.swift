@@ -13,7 +13,13 @@ import Foundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
 
+    // outlets
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var btnSearch: UIButton!
+    @IBOutlet weak var txtSearch: UITextField!
+    //
+    
+    let global = Global()
     
     var fakeDictionary : Dictionary<Int,[String:Double]> =
                          [1: ["latitude": 49.307136, "longitude": -123.024729],
@@ -55,12 +61,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             pinView!.canShowCallout = true
             pinView!.calloutOffset = CGPoint(x: -5, y: 5)
-            pinView!.image = UIImage(named:"turtle.jpg")
+            pinView!.image = UIImage(named:"turtle")
             pinView!.frame.size = CGSize(width: 45.0, height: 45.0)
             
         }
         
         return pinView
+        
+    }
+    
+    @IBAction func btnSearchClick(sender: AnyObject) {
+    
+        if let search = self.txtSearch.text {
+            
+            if self.txtSearch.text == "" {
+                return
+            }
+            
+            let url = "\(self.global.base_url)/search"
+            self.global.request(url, params: ["search": search], headers: nil, type: HTTPTYPE.GET) { (response) in
+                
+            }
+            
+        }
         
     }
     
