@@ -11,7 +11,7 @@ import MapKit
 import SwiftyJSON
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
+class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
 
     // outlets
     @IBOutlet weak var mapView: MKMapView!
