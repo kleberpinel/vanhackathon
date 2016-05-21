@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DE899584E77A28C09D422BC6 /* Pods_turtle_ninjas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B956099509A4860FB60676 /* Pods_turtle_ninjas.framework */; };
 		ED54B6E01CEFFBDF0026E3D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6DF1CEFFBDF0026E3D3 /* AppDelegate.swift */; };
-		ED54B6E21CEFFBDF0026E3D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6E11CEFFBDF0026E3D3 /* ViewController.swift */; };
+		ED54B6E21CEFFBDF0026E3D3 /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6E11CEFFBDF0026E3D3 /* Maps.swift */; };
 		ED54B6E51CEFFBDF0026E3D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED54B6E31CEFFBDF0026E3D3 /* Main.storyboard */; };
 		ED54B6E81CEFFBDF0026E3D3 /* turtle_ninjas.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6E61CEFFBDF0026E3D3 /* turtle_ninjas.xcdatamodeld */; };
 		ED54B6EA1CEFFBDF0026E3D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED54B6E91CEFFBDF0026E3D3 /* Assets.xcassets */; };
@@ -25,7 +25,7 @@
 		E0ADF1B2B64D8A0B2C333811 /* Pods-turtle-ninjas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-turtle-ninjas.release.xcconfig"; path = "Pods/Target Support Files/Pods-turtle-ninjas/Pods-turtle-ninjas.release.xcconfig"; sourceTree = "<group>"; };
 		ED54B6DC1CEFFBDF0026E3D3 /* turtle-ninjas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "turtle-ninjas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED54B6DF1CEFFBDF0026E3D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ED54B6E11CEFFBDF0026E3D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED54B6E11CEFFBDF0026E3D3 /* Maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
 		ED54B6E41CEFFBDF0026E3D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED54B6E71CEFFBDF0026E3D3 /* turtle_ninjas.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = turtle_ninjas.xcdatamodel; sourceTree = "<group>"; };
 		ED54B6E91CEFFBDF0026E3D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,27 +131,19 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		ED54B6FC1CEFFE5C0026E3D3 /* Controlllers */ = {
+		ED54B6FC1CEFFE5C0026E3D3 /* View-Controlllers */ = {
 			isa = PBXGroup;
 			children = (
-				ED54B6E11CEFFBDF0026E3D3 /* ViewController.swift */,
+				ED54B6E11CEFFBDF0026E3D3 /* Maps.swift */,
 			);
-			name = Controlllers;
-			sourceTree = "<group>";
-		};
-		ED54B6FD1CEFFE620026E3D3 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
+			name = "View-Controlllers";
 			sourceTree = "<group>";
 		};
 		ED54B6FE1CEFFE670026E3D3 /* MVC */ = {
 			isa = PBXGroup;
 			children = (
 				ED54B6FB1CEFFE510026E3D3 /* Models */,
-				ED54B6FD1CEFFE620026E3D3 /* Views */,
-				ED54B6FC1CEFFE5C0026E3D3 /* Controlllers */,
+				ED54B6FC1CEFFE5C0026E3D3 /* View-Controlllers */,
 			);
 			name = MVC;
 			sourceTree = "<group>";
@@ -280,7 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED54B6F71CEFFDE00026E3D3 /* Global.swift in Sources */,
-				ED54B6E21CEFFBDF0026E3D3 /* ViewController.swift in Sources */,
+				ED54B6E21CEFFBDF0026E3D3 /* Maps.swift in Sources */,
 				ED54B6E01CEFFBDF0026E3D3 /* AppDelegate.swift in Sources */,
 				ED54B7001CF009E00026E3D3 /* Connection.swift in Sources */,
 				ED54B6E81CEFFBDF0026E3D3 /* turtle_ninjas.xcdatamodeld in Sources */,

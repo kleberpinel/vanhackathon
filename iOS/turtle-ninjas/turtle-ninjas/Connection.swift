@@ -1,5 +1,5 @@
 //
-//  ConnectionChecker.swift
+//  Connection.swift
 //  turtle-ninjas
 //
 //  Created by Vitor Oliveira on 5/21/16.
