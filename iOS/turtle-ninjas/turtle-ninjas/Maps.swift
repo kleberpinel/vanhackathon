@@ -15,11 +15,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var fakeDictionary : Dictionary<Int,[String:Double]> =
+                         [1: ["latitude": 49.307136, "longitude": -123.024729],
+                          2: ["latitude": 49.307024, "longitude": -123.027615,],
+                          3: ["latitude": 49.305975, "longitude": -123.028323,]]
+    
     var manager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startLocationManager()
+        self.loadClosestAnnotations(fakeDictionary)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,16 +36,60 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
      
         let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
-        
         let region = MKCoordinateRegionMakeWithDistance(location, 500.0, 700.0)
         
         self.mapView.setRegion(region, animated: true)
         
     }
  
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier("pin")
+        
+        if pinView == nil {
+      
+            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+            pinView!.canShowCallout = true
+            pinView!.calloutOffset = CGPoint(x: -5, y: 5)
+            pinView!.image = UIImage(named:"turtle.jpg")
+            pinView!.frame.size = CGSize(width: 45.0, height: 45.0)
+            
+        }
+        
+        return pinView
+        
+    }
+    
     //
     // mark : private functions
     //
+    
+    private func loadClosestAnnotations(locations: Dictionary<Int,[String:Double]>) {
+        
+        for i in 1...locations.count {
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                if let annotation = locations[i] {
+                
+                    let anotation = MKPointAnnotation()
+                    let location  = CLLocationCoordinate2D(latitude: annotation["latitude"]!, longitude: annotation["longitude"]!)
+                    
+                    anotation.title = "Title"
+                    anotation.subtitle = "Subtitle"
+                    anotation.coordinate = location
+                    
+                    self.mapView.addAnnotation(anotation)
+                    
+                }
+            }
+            
+        }
+        
+    }
     
     private func startLocationManager(){
         
