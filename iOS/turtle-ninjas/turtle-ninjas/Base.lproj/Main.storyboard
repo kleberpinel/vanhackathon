@@ -20,22 +20,53 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xxn-r9-CvI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search for a place" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PjQ-ip-1Ah">
+                                <rect key="frame" x="151" y="28" width="299" height="39"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="299" id="i5p-Yp-dkZ"/>
+                                    <constraint firstAttribute="height" constant="39" id="z1b-2W-hFh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jld-0O-Art">
+                                <rect key="frame" x="420" y="36" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="WLd-Oa-T77"/>
+                                    <constraint firstAttribute="height" constant="24" id="vPE-ST-FzY"/>
+                                </constraints>
+                                <state key="normal" image="ic_search"/>
+                                <connections>
+                                    <action selector="btnSearchClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RO8-HF-wnj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xxn-r9-CvI" secondAttribute="bottom" id="6Sg-WJ-erK"/>
                             <constraint firstAttribute="trailing" secondItem="Xxn-r9-CvI" secondAttribute="trailing" id="Ebi-oR-ZAQ"/>
+                            <constraint firstItem="jld-0O-Art" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="132" id="GlE-5N-3tc"/>
                             <constraint firstItem="Xxn-r9-CvI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PEt-ue-L3f"/>
+                            <constraint firstItem="PjQ-ip-1Ah" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="enW-Bj-Z1W"/>
                             <constraint firstItem="Xxn-r9-CvI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="h7F-5W-Obh"/>
+                            <constraint firstItem="PjQ-ip-1Ah" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lEv-fS-2Lf"/>
+                            <constraint firstItem="jld-0O-Art" firstAttribute="bottom" secondItem="PjQ-ip-1Ah" secondAttribute="bottom" constant="-7" id="ngn-UR-fsP"/>
+                            <constraint firstItem="jld-0O-Art" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="rWu-KL-glT"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnSearch" destination="jld-0O-Art" id="CIA-pk-Lrc"/>
                         <outlet property="mapView" destination="Xxn-r9-CvI" id="FUO-WR-s0g"/>
+                        <outlet property="txtSearch" destination="PjQ-ip-1Ah" id="X6A-Vp-Sj1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="510" y="299"/>
+            <point key="canvasLocation" x="455" y="272"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_search" width="22" height="22"/>
+    </resources>
 </document>
