@@ -1,0 +1,22 @@
+PODS:
+  - SwiftHTTP (1.0.5)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - SwiftHTTP (~> 1.0.4)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 2a5b70f06001316d4fb54501edc70b4084705da0
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  SwiftHTTP: edb45e72f27d1d95d328d2b2c16a61aa94f1e9f7
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0
