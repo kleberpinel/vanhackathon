@@ -22,7 +22,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
     //
     
     let global = Global()
-    var manager = CLLocationManager()
+    var manager : CLLocationManager!
     
     var store_json = JSON("")
     var selectedStore : Int!
@@ -88,7 +88,6 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
         self.selectedStore = sender!.view!.tag
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
-            print(sender!.view!.tag)
             self.txtStoreName.text = self.store_json[sender!.view!.tag]["name"].stringValue
         })
     }
@@ -108,6 +107,20 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
             
         }
         
+    }
+    
+    @IBAction func tapFooterView(sender: AnyObject) {
+        self.goToStoreView()
+    }
+    
+    @IBAction func tapFooterName(sender: AnyObject) {
+        self.goToStoreView()
+    }
+    
+    func goToStoreView(){
+        dispatch_async(dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("transMapToStore", sender: nil)
+        }
     }
     
     //
@@ -141,6 +154,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
         
         // Check whether or not GPS is turned on
         if (CLLocationManager.locationServicesEnabled()) {
+            manager = CLLocationManager()
             manager.delegate = self
             manager.desiredAccuracy = kCLLocationAccuracyBest
             manager.requestWhenInUseAuthorization()
