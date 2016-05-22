@@ -18,6 +18,7 @@
 		ED54B6F71CEFFDE00026E3D3 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6F61CEFFDE00026E3D3 /* Global.swift */; };
 		ED54B7001CF009E00026E3D3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6FF1CF009E00026E3D3 /* Connection.swift */; };
 		ED54B7201CF121570026E3D3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B71F1CF121570026E3D3 /* Store.swift */; };
+		ED91E2A21CF2605F0093DDAC /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91E2A11CF2605F0093DDAC /* Delivery.swift */; };
 		ED9E86981CF14B72008EB181 /* Pins.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E86971CF14B71008EB181 /* Pins.swift */; };
 		ED9E869A1CF15F52008EB181 /* mStores.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E86991CF15F52008EB181 /* mStores.swift */; };
 		ED9E869C1CF15FA4008EB181 /* ModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E869B1CF15FA4008EB181 /* ModelHelper.swift */; };
@@ -42,6 +43,7 @@
 		ED54B6F61CEFFDE00026E3D3 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		ED54B6FF1CF009E00026E3D3 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		ED54B71F1CF121570026E3D3 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		ED91E2A11CF2605F0093DDAC /* Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
 		ED9E86971CF14B71008EB181 /* Pins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pins.swift; sourceTree = "<group>"; };
 		ED9E86991CF15F52008EB181 /* mStores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mStores.swift; sourceTree = "<group>"; };
 		ED9E869B1CF15FA4008EB181 /* ModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelHelper.swift; sourceTree = "<group>"; };
@@ -151,11 +153,12 @@
 		ED54B6FC1CEFFE5C0026E3D3 /* View-Controlllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED91E2A11CF2605F0093DDAC /* Delivery.swift */,
 				ED54B6E11CEFFBDF0026E3D3 /* Maps.swift */,
-				ED54B71F1CF121570026E3D3 /* Store.swift */,
-				EDE87B121CF128D7008D3995 /* StoreProducts.swift */,
 				ED9E86971CF14B71008EB181 /* Pins.swift */,
 				ED9E869F1CF16F3B008EB181 /* Splash.swift */,
+				ED54B71F1CF121570026E3D3 /* Store.swift */,
+				EDE87B121CF128D7008D3995 /* StoreProducts.swift */,
 			);
 			name = "View-Controlllers";
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				ED9E86981CF14B72008EB181 /* Pins.swift in Sources */,
 				ED9E86A01CF16F3B008EB181 /* Splash.swift in Sources */,
 				ED9E869A1CF15F52008EB181 /* mStores.swift in Sources */,
+				ED91E2A21CF2605F0093DDAC /* Delivery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +422,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "turtle-ninjas/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myProjects.turtle-ninjas";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,7 +436,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "turtle-ninjas/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myProjects.turtle-ninjas";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -89,6 +89,19 @@ class Store: UIViewController {
     }
     
     //
+    // mark: segues between views
+    //
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject?){
+        if (segue.identifier=="transCartToDelivery"){
+            if let vc = segue.destinationViewController as? Delivery {
+                vc.cartData = self.cartData
+                vc.products_json = self.products_json
+            }
+        }
+    }
+    
+    //
     // mark: tableView funcs
     // 
     

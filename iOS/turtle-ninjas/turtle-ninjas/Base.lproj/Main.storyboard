@@ -73,7 +73,7 @@
                         <outlet property="labelDescription" destination="L4K-E1-QYW" id="J1w-eL-K9f"/>
                         <outlet property="labelInternetConnection" destination="4ni-RG-LBq" id="NX6-ab-igc"/>
                         <outlet property="labelRefreshIcon" destination="l8i-iU-Bl2" id="9nr-lU-eMO"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="transSplashToMap" id="8b5-n7-fqZ"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="transSplashToMap" animates="NO" id="8b5-n7-fqZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XE-dO-Mhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -226,12 +226,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="501" y="1036"/>
+            <point key="canvasLocation" x="515" y="2098"/>
         </scene>
-        <!--Store-->
+        <!--Store/Cart-->
         <scene sceneID="Ji6-Zd-DiN">
             <objects>
-                <viewController title="Store" id="naS-zd-QG3" customClass="Store" customModule="turtle_ninjas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Store/Cart" id="naS-zd-QG3" customClass="Store" customModule="turtle_ninjas" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bdj-mr-erV"/>
                         <viewControllerLayoutGuide type="bottom" id="1Bc-ii-VLR"/>
@@ -266,6 +266,9 @@
                                     <constraint firstAttribute="width" constant="285" id="dzj-6b-Uhh"/>
                                 </constraints>
                                 <state key="normal" image="BTN-checkout"/>
+                                <connections>
+                                    <segue destination="yNH-in-YpA" kind="show" identifier="transCartToDelivery" animates="NO" id="y8V-yX-Efo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06i-jk-xAL">
                                 <rect key="frame" x="556" y="32" width="24" height="24"/>
@@ -464,11 +467,116 @@
             </objects>
             <point key="canvasLocation" x="1307" y="272"/>
         </scene>
+        <!--Delivery-->
+        <scene sceneID="tLS-F6-qiq">
+            <objects>
+                <viewController title="Delivery" id="yNH-in-YpA" customClass="Delivery" customModule="turtle_ninjas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LP9-A1-L2Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="2cc-JM-4dT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OrL-rB-nFU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywp-eG-SLE">
+                                <rect key="frame" x="72" y="34" width="481" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="LWd-cv-NaC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.1764705882" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXm-fj-lOb">
+                                <rect key="frame" x="559" y="32" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="LjA-Ds-660"/>
+                                    <constraint firstAttribute="width" constant="24" id="j2O-8f-i1g"/>
+                                </constraints>
+                                <state key="normal" image="x-66"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="transDeliveryToMaps" animates="NO" id="2AC-6o-RDI"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Store-icon" translatesAutoresizingMaskIntoConstraints="NO" id="8f2-Ep-jRh">
+                                <rect key="frame" x="17" y="23" width="53" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="GEH-nt-U7X"/>
+                                    <constraint firstAttribute="width" constant="53" id="tMh-V4-Box"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9X-3B-nGd">
+                                <rect key="frame" x="160" y="235" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Bwm-Zk-dNm"/>
+                                    <constraint firstAttribute="width" constant="280" id="xyO-l6-lYR"/>
+                                </constraints>
+                                <state key="normal" image="button_pick_in_store"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4x-Zn-Phb">
+                                <rect key="frame" x="160" y="327" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="E36-Mk-2fX"/>
+                                    <constraint firstAttribute="width" constant="280" id="Qqw-iG-Bag"/>
+                                </constraints>
+                                <state key="normal" image="delivered_for_me"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-G8-oII">
+                                <rect key="frame" x="159" y="290" width="282" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Ljy-hW-HSm"/>
+                                    <constraint firstAttribute="width" constant="282" id="iQF-C0-ZGj"/>
+                                </constraints>
+                                <state key="normal" image="line_or"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How do you want to get your product?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZq-ij-HOW">
+                                <rect key="frame" x="171" y="145" width="259" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="Phg-mQ-OQV"/>
+                                    <constraint firstAttribute="width" constant="259" id="nMQ-J8-8KR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.3529411764705882" green="0.3529411764705882" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="hXm-fj-lOb" secondAttribute="trailing" constant="-3" id="0vu-3X-AmW"/>
+                            <constraint firstItem="dtb-G8-oII" firstAttribute="centerY" secondItem="OrL-rB-nFU" secondAttribute="centerY" constant="1" id="BJp-hU-h2F"/>
+                            <constraint firstItem="dtb-G8-oII" firstAttribute="centerX" secondItem="OrL-rB-nFU" secondAttribute="centerX" id="D86-lI-q6R"/>
+                            <constraint firstItem="mZq-ij-HOW" firstAttribute="centerX" secondItem="OrL-rB-nFU" secondAttribute="centerX" id="PM4-Di-7kh"/>
+                            <constraint firstItem="N9X-3B-nGd" firstAttribute="top" secondItem="mZq-ij-HOW" secondAttribute="bottom" constant="23" id="QJQ-eB-mjx"/>
+                            <constraint firstItem="N9X-3B-nGd" firstAttribute="centerX" secondItem="OrL-rB-nFU" secondAttribute="centerX" id="UgD-ao-pN0"/>
+                            <constraint firstItem="8f2-Ep-jRh" firstAttribute="leading" secondItem="OrL-rB-nFU" secondAttribute="leadingMargin" constant="-3" id="VYm-dk-RXa"/>
+                            <constraint firstItem="hXm-fj-lOb" firstAttribute="top" secondItem="LP9-A1-L2Q" secondAttribute="bottom" constant="12" id="jah-ct-sqi"/>
+                            <constraint firstItem="ywp-eG-SLE" firstAttribute="leading" secondItem="8f2-Ep-jRh" secondAttribute="trailing" constant="2" id="kIn-G5-En3"/>
+                            <constraint firstItem="ywp-eG-SLE" firstAttribute="leading" secondItem="8f2-Ep-jRh" secondAttribute="trailing" constant="2" id="qMN-mM-OAJ"/>
+                            <constraint firstItem="hXm-fj-lOb" firstAttribute="leading" secondItem="ywp-eG-SLE" secondAttribute="trailing" constant="6" id="t9e-cN-QXQ"/>
+                            <constraint firstItem="H4x-Zn-Phb" firstAttribute="centerX" secondItem="OrL-rB-nFU" secondAttribute="centerX" id="v7y-ik-i8O"/>
+                            <constraint firstItem="dtb-G8-oII" firstAttribute="top" secondItem="N9X-3B-nGd" secondAttribute="bottom" constant="15" id="w8r-GK-VEQ"/>
+                            <constraint firstItem="8f2-Ep-jRh" firstAttribute="top" secondItem="LP9-A1-L2Q" secondAttribute="bottom" constant="3" id="wNX-Rn-AsZ"/>
+                            <constraint firstItem="ywp-eG-SLE" firstAttribute="top" secondItem="LP9-A1-L2Q" secondAttribute="bottom" constant="14" id="xZ0-U1-lzp"/>
+                            <constraint firstItem="H4x-Zn-Phb" firstAttribute="top" secondItem="dtb-G8-oII" secondAttribute="bottom" constant="15" id="yNq-oD-Mto"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelStoreName" destination="ywp-eG-SLE" id="0Br-dF-HlU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="krf-IX-haq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1719" y="1162"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BTN-checkout" width="311" height="43"/>
         <image name="Store-icon" width="66" height="66"/>
+        <image name="button_pick_in_store" width="280" height="40"/>
+        <image name="delivered_for_me" width="280" height="40"/>
         <image name="ic_search" width="22" height="22"/>
+        <image name="line_or" width="282" height="10"/>
         <image name="logo-66" width="66" height="66"/>
         <image name="logo-shopify-map" width="100" height="100"/>
         <image name="minus" width="27" height="23"/>
@@ -479,6 +587,6 @@
         <image name="x-66" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jgK-lY-8Pm"/>
+        <segue reference="8b5-n7-fqZ"/>
     </inferredMetricsTieBreakers>
 </document>
