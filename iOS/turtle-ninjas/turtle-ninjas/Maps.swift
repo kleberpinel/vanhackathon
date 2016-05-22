@@ -84,7 +84,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     }
     
     func showFooter(sender: UITapGestureRecognizer? = nil) {
-        self.selectedStore = sender!.view!.tag
+        self.selectedStore = Int(self.stores![sender!.view!.tag].id)
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
             self.txtStoreName.text = self.stores![sender!.view!.tag].name
@@ -122,6 +122,14 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject?){
+        if (segue.identifier=="transMapToStore"){
+            if let vc = segue.destinationViewController as? Store {
+                vc.store_id = self.selectedStore
+            }
+        }
+    }
+    
     //
     // mark : private functions
     //
@@ -130,11 +138,9 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         for i in 0...stores.count-1 {
             dispatch_async(dispatch_get_main_queue()) {
                 let anotation = CustomPointAnnotation()
-                let location  = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
+                 let location  = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
                 
                 anotation.tag = i
-                anotation.title = stores[i].name
-                anotation.subtitle = stores[i].street
                 anotation.coordinate = location
                     
                 self.mapView.addAnnotation(anotation)
