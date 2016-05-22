@@ -6,4 +6,11 @@
 //  Copyright © 2016 Vitor Oliveira. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import MapKit
+
+class CustomPointAnnotation: MKPointAnnotation {
+
+    var tag: Int!
+
+}
