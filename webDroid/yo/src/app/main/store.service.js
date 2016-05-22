@@ -4,13 +4,15 @@
         .module('yo')
         .service('StoreService', StoreService);
 
-    function StoreService($http, $log, API) {
+    function StoreService($http, API, $log) {
         var service = {};
         service.Search = Search;
         return service;
 
         function Search(q) {
-            return $http.get(url(q)).then(handleSuccess, handleError('Error getting stores'));          
+            var u = url(q);
+            $log.debug(u);
+            return $http.get(u).then(handleSuccess, handleError('Error getting stores'));          
         }
 
         function url(q) {

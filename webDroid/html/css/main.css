@@ -49,6 +49,7 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  margin: auto;
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
   border-radius: 1px;

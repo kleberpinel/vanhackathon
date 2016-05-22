@@ -6,6 +6,16 @@
     transition: all $time $anim;
 }
 
+.marker_labels {
+    font-size: 14px;
+    color: #7AB55C;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #7AB55C;
+    padding: 5px;
+    margin-top: -12px!important;
+}
+
 .search-box {
     position: absolute;
     width: 50%;
@@ -16,65 +26,170 @@
     margin: auto;
 }
 
+.product-details{
+    @extend .col-xs-8; 
+    @extend .col-sm-8; 
+    @extend .col-md-8; 
+    @extend .col-lg-8;
+    margin-left: 30px;
+    width: auto;
+}
+
+.product-image{
+    @extend .col-xs-2; 
+    @extend .col-sm-2; 
+    @extend .col-md-2; 
+    @extend .col-lg-2;     
+}
+
+
+.product-price{
+    @extend .col-xs-2; 
+    @extend .col-sm-2; 
+    @extend .col-md-2; 
+    @extend .col-lg-2;
+    @extend .pull-right;
+    text-align: right;
+}
+
+.goLeft {
+    left: 30%;
+    width: 70%;
+}
+
 .slidein,
-.slideout {    
-    @include transition(0.2, "ease-out");
+.slideout {
+    @include transition(0.2s, ease-out);
 }
 
 .slidein.ng-hide-remove,
 .slideout.ng-hide-add.ng-hide-add-active {
-  opacity: 0;
-  display: block !important;
+    opacity: 0;
+    display: block !important;
 }
 
 .slideout.ng-hide-add,
 .slidein.ng-hide-remove.ng-hide-remove-active {
-  opacity: 1;
-  display: block !important;
+    opacity: 1;
+    display: block !important;
 }
 
-
-
 .side {
-    padding: 20px;
+    background: white;
     position: absolute;
-    background: #f2f2f2;
     left: 0px;
-    width: 20%;
+    width: 300px;
     min-width: 300px;
     height: 100%;
     z-index: 1001;
+    .side-header {
+        background: white;
+        padding: 20px;
+    }
+    .side-body {
+        .side-table {
+            h6 {
+                text-align: center;
+            }
+            .row {
+                
+                padding: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                padding-bottom: 20px;
+                img {
+                    border-radius: 5px;
+                    max-width:70px;
+                    max-height:70px;
+                }
+                .product-name{
+                    font-size: 14px;
+                }
+                h4{
+                    padding: 3px;
+                    margin-top: 0px;
+                    margin-bottom: 0px;                    
+                    small{
+                        font-size: 12px;       
+                    }
+                }
+                .input-group{ 
+                    width: 100px;
+                    .form-control{
+                        padding: 0px;
+                        height: 25px;                        
+                        text-align: center;
+                        font-size: 12px!important;
+                    }
+                    input, button{
+                        font-size: 7px!important;
+                    }
+                }
+            }
+            div {
+                padding: 0px;
+            }
+            margin: auto;
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+            max-height: 300px;
+        }
+    }
     i {
         color: black;
     }
 }
 
+.total{
+    .total-info{
+        text-align: center;
+    }
+    padding: 20px;
+    bottom: 0px;
+}
 
 .side-close {
     border-radius: 25px 0 0 25px;
     position: absolute;
     top: 10px;
-    right: 0;
+    right: -4px;
     cursor: pointer;
     z-index: 200;
     background: #1E1E1E;
-    opacity: 0.5;
+    opacity: 0.6;
     line-height: 30px;
     height: 30px;
     width: 30px;
     text-align: center;
-    // &:hover {
-    //     background: white;
-    // }
+    //border: 1px solid black;
+    &:hover {
+        background: white;
+    }
     &:before {
-        border-radius: 25px 0 25px 0;        
+        border-radius: 25px 0 25px 0;
         color: white;
         opacity: 0.9;
-    } 
+    }
 }
 
 @media (max-width: 760px) {
     .search-box {
         width: 90%;
+    }
+}
+
+@media (max-width: 760px) {
+    .side {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    .side-body{
+        margin: auto;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        max-height: 300px;        
     }
 }
