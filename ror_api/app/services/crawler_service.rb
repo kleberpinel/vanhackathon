@@ -49,6 +49,7 @@ class CrawlerService
         puts "Finding products to #{merchant.name}"
         while i < products  do
           begin
+            sleep(1.seconds)
             product_name = product_name_array[rand(product_name_array.size)]
             url = "http://api.duckduckgo.com/?q=#{product_name}&format=json&pretty=1"
             
@@ -77,7 +78,7 @@ class CrawlerService
             Product.create(product)
             i += 1
           rescue Exception => e  
-            puts e.message
+            puts e
           end  
         end
       end
