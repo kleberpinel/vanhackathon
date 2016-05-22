@@ -16,7 +16,7 @@ enum HTTPTYPE {
 
 public class Global {
 
-    public var base_url = "http://turtle-ninjas.herokuapp.com/"
+    public var base_url = "http://turtle-ninjas.herokuapp.com/search"
     
     func request(url: String, params: Dictionary<String,AnyObject>?, headers: Dictionary<String,String>?, type: HTTPTYPE, completion:(JSON) -> Void)  {
         
@@ -24,6 +24,7 @@ public class Global {
             
             do {
                
+                //get as default
                 var opt = try HTTP.GET(url, parameters: params, headers: headers)
                 
                 switch type {
