@@ -42,7 +42,7 @@
                                     <action selector="btnSearchClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RO8-HF-wnj"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBs-7C-Ox8">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBs-7C-Ox8">
                                 <rect key="frame" x="0.0" y="530" width="600" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BTN-Buy" translatesAutoresizingMaskIntoConstraints="NO" id="hxh-Bl-cVS">
@@ -100,6 +100,8 @@
                         <outlet property="btnSearch" destination="jld-0O-Art" id="CIA-pk-Lrc"/>
                         <outlet property="mapView" destination="Xxn-r9-CvI" id="FUO-WR-s0g"/>
                         <outlet property="txtSearch" destination="PjQ-ip-1Ah" id="X6A-Vp-Sj1"/>
+                        <outlet property="txtStoreName" destination="cGP-fH-qXd" id="aCH-3w-bln"/>
+                        <outlet property="viewFooter" destination="zBs-7C-Ox8" id="wW8-Vm-ahi"/>
                         <segue destination="naS-zd-QG3" kind="show" identifier="transMapToStore" id="ar3-Uc-xXR"/>
                     </connections>
                 </viewController>
@@ -158,6 +160,7 @@
                                 <state key="normal" image="x-66"/>
                                 <connections>
                                     <action selector="backButtonClick:" destination="naS-zd-QG3" eventType="touchUpInside" id="oQB-eR-Uju"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="transStoreToMap" id="jgK-lY-8Pm"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Store-icon" translatesAutoresizingMaskIntoConstraints="NO" id="f9f-h3-CXV">
@@ -299,7 +302,6 @@
                         <outlet property="storeName" destination="j9E-Ps-Qgv" id="xfA-Po-Yld"/>
                         <outlet property="tableView" destination="PwA-hf-66W" id="rRP-5d-Jxp"/>
                         <outlet property="totalAmount" destination="HLK-8D-R6m" id="WxX-oj-dbg"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="transStoreToMap" id="vbp-T1-Pa6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WVo-nG-97u" userLabel="First Responder" sceneMemberID="firstResponder"/>
