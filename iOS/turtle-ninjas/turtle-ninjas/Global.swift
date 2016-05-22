@@ -63,3 +63,12 @@ public class Global {
     }
 
 }
+
+extension Float {
+    func format(fractionDigits: Int) -> String {
+        let formatter = NSNumberFormatter()
+        formatter.minimumFractionDigits = fractionDigits
+        formatter.maximumFractionDigits = fractionDigits
+        return formatter.stringFromNumber(self) ?? "\(self)"
+    }
+}

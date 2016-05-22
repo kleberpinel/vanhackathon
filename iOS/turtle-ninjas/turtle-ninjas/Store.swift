@@ -65,18 +65,18 @@ class Store: UIViewController {
         
         if option == .ADD {
             quantity = Int(cell.productQuantity.text!)! + 1
-            self.totalAmount.text = String(Float(totalAmount.text!)! + price)
+            self.totalAmount.text = (Float(totalAmount.text!)! + price).format(2)
         } else {
             if cell.productQuantity.text != "0" {
                 quantity = Int(cell.productQuantity.text!)! - 1
-                self.totalAmount.text = String(Float(totalAmount.text!)! - price)
+                self.totalAmount.text = (Float(totalAmount.text!)! - price).format(2)
             }
         }
         
         self.cartData.items[row] = String(quantity)
         
         cell.productQuantity.text = String(quantity)
-        cell.productPrice.text = "$" + String(price * Float(quantity))
+        cell.productPrice.text = "$" + (price * Float(quantity)).format(2)
         
     }
     
@@ -113,7 +113,7 @@ class Store: UIViewController {
         
         if (self.cartData.items[row] != nil) {
             cell.productQuantity.text = self.cartData.items[row]
-            cell.productPrice.text = String(Double(self.cartData.items[row]!)! * self.products_json["products"][row]["price"].doubleValue)
+            cell.productPrice.text = "$" + String(Double(self.cartData.items[row]!)! * self.products_json["products"][row]["price"].doubleValue)
         } else {
             cell.productQuantity.text = "0"
             cell.productPrice.text = "$0.00"
