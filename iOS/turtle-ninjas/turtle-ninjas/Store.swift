@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Haneke
 import SwiftyJSON
 import CoreLocation
 
@@ -53,6 +54,19 @@ class Store: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Products", forIndexPath: indexPath) as! StoreProducts
+        
+        let row = indexPath.row
+        
+        cell.productName.text = self.products_json[row].stringValue
+        cell.productPrice.text = self.products_json[row].stringValue
+        
+        if let avatarURL = NSURL(string: self.products_json[row].stringValue) {
+            cell.productAvatar.hnk_setImageFromURL(avatarURL, placeholder: nil, success: { (image) -> Void in
+                cell.productAvatar.image = image
+            }, failure: { (error) -> Void in
+                
+            })
+        }
         
         return cell
         

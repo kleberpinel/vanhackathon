@@ -84,10 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-turtle-ninjas/Haneke.framework"
   install_framework "Pods-turtle-ninjas/SwiftHTTP.framework"
   install_framework "Pods-turtle-ninjas/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-turtle-ninjas/Haneke.framework"
   install_framework "Pods-turtle-ninjas/SwiftHTTP.framework"
   install_framework "Pods-turtle-ninjas/SwiftyJSON.framework"
 fi
