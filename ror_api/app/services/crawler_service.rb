@@ -44,36 +44,42 @@ class CrawlerService
     Merchant.all.each do |merchant|
       products = rand(1000)
       i = 0
-      while i < products  do
-        begin
-          product_name = product_name_array[rand(product_name_array.size)]
-          url = "http://api.duckduckgo.com/?q=#{product_name}&format=json&pretty=1"
-          response = HTTParty.get(url)
-          answer = JSON.parse(response.body)
-          
-          description = ""
-          image_url = ""
-          if answer["RelatedTopics"].present?
-            topic = answer["RelatedTopics"][rand(0..answer["RelatedTopics"].size)]
-            description = topic["Text"]
-            if topic["Icon"].present?
-              image_url = topic["Icon"]["URL"]
+      puts "-- #{merchant.products.size}"
+      if merchant.products.empty?
+        puts "Finding products to #{merchant.name}"
+        while i < products  do
+          begin
+            product_name = product_name_array[rand(product_name_array.size)]
+            url = "http://api.duckduckgo.com/?q=#{product_name}&format=json&pretty=1"
+            
+            response = HTTParty.get(url)
+            json = response.body
+            answer = json && json.length >= 2 ? JSON.parse(json) : nil
+
+            description = ""
+            image_url = ""
+            if answer["RelatedTopics"].present?
+              topic = answer["RelatedTopics"][rand(0..answer["RelatedTopics"].size)]
+              description = topic["Text"]
+              if topic["Icon"].present?
+                image_url = topic["Icon"]["URL"]
+              end
+            else
+              description = Faker::Company.catch_phrase + " " + Faker::Lorem.sentence
             end
-          else
-            description = Faker::Company.catch_phrase + " " + Faker::Lorem.sentence
-          end
-          product = {
-            name: product_name,
-            description: description,
-            price: rand(1..10),
-            image_url: image_url,
-            merchant_id: merchant.id
-          }
-          Product.create(product)
-          i += 1
-        rescue Exception => e  
-          puts e.message
-        end  
+            product = {
+              name: product_name,
+              description: description,
+              price: rand(1..10),
+              image_url: image_url,
+              merchant_id: merchant.id
+            }
+            Product.create(product)
+            i += 1
+          rescue Exception => e  
+            puts e.message
+          end  
+        end
       end
     end
   end
