@@ -8,10 +8,10 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 import CoreLocation
-import Foundation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
+class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
 
     // outlets
     @IBOutlet weak var mapView: MKMapView!
@@ -21,17 +21,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     let global = Global()
     
-    var fakeDictionary : Dictionary<Int,[String:Double]> =
-                         [1: ["latitude": 49.307136, "longitude": -123.024729],
-                          2: ["latitude": 49.307024, "longitude": -123.027615,],
-                          3: ["latitude": 49.305975, "longitude": -123.028323,]]
-    
     var manager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startLocationManager()
-        self.loadClosestAnnotations(fakeDictionary)
+        
+        let url = "\(self.global.base_url)"
+        self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
+            self.loadAnnotations(response)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,7 +61,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
             pinView!.canShowCallout = true
             pinView!.calloutOffset = CGPoint(x: -5, y: 5)
-            pinView!.image = UIImage(named:"turtle")
+            pinView!.image = UIImage(named:"shopify-logo")
             pinView!.frame.size = CGSize(width: 45.0, height: 45.0)
             
         }
@@ -72,15 +72,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     @IBAction func btnSearchClick(sender: AnyObject) {
     
-        if let search = self.txtSearch.text {
+        if let _ = self.txtSearch.text {
             
             if self.txtSearch.text == "" {
-                return
+            //    return
             }
             
-            let url = "\(self.global.base_url)/search"
-            self.global.request(url, params: ["search": search], headers: nil, type: HTTPTYPE.GET) { (response) in
-                
+            let url = "\(self.global.base_url)"
+            self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
+                self.loadAnnotations(response)
             }
             
         }
@@ -91,23 +91,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     // mark : private functions
     //
     
-    private func loadClosestAnnotations(locations: Dictionary<Int,[String:Double]>) {
+    private func loadAnnotations(stores: (JSON)) {
         
-        for i in 1...locations.count {
+        for i in 1...stores.count {
             
             dispatch_async(dispatch_get_main_queue()) {
-                if let annotation = locations[i] {
+                let anotation = MKPointAnnotation()
+                let location  = CLLocationCoordinate2D(latitude: stores[i]["latitude"].doubleValue, longitude: stores[i]["longitude"].doubleValue)
+                    
+                anotation.title = stores[i]["name"].stringValue
+                anotation.subtitle = stores[i]["street"].stringValue
+                anotation.coordinate = location
                 
-                    let anotation = MKPointAnnotation()
-                    let location  = CLLocationCoordinate2D(latitude: annotation["latitude"]!, longitude: annotation["longitude"]!)
-                    
-                    anotation.title = "Title"
-                    anotation.subtitle = "Subtitle"
-                    anotation.coordinate = location
-                    
-                    self.mapView.addAnnotation(anotation)
-                    
-                }
+                self.mapView.addAnnotation(anotation)
             }
             
         }

@@ -17,6 +17,8 @@
 		ED54B6F51CEFFD5A0026E3D3 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = ED54B6F41CEFFD5A0026E3D3 /* Podfile */; };
 		ED54B6F71CEFFDE00026E3D3 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6F61CEFFDE00026E3D3 /* Global.swift */; };
 		ED54B7001CF009E00026E3D3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6FF1CF009E00026E3D3 /* Connection.swift */; };
+		ED54B7201CF121570026E3D3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B71F1CF121570026E3D3 /* Store.swift */; };
+		EDE87B131CF128D7008D3995 /* StoreProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE87B121CF128D7008D3995 /* StoreProducts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		ED54B6F41CEFFD5A0026E3D3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		ED54B6F61CEFFDE00026E3D3 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		ED54B6FF1CF009E00026E3D3 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		ED54B71F1CF121570026E3D3 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		EDE87B121CF128D7008D3995 /* StoreProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProducts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				ED54B6E11CEFFBDF0026E3D3 /* Maps.swift */,
+				ED54B71F1CF121570026E3D3 /* Store.swift */,
+				EDE87B121CF128D7008D3995 /* StoreProducts.swift */,
 			);
 			name = "View-Controlllers";
 			sourceTree = "<group>";
@@ -274,6 +280,8 @@
 				ED54B6F71CEFFDE00026E3D3 /* Global.swift in Sources */,
 				ED54B6E21CEFFBDF0026E3D3 /* Maps.swift in Sources */,
 				ED54B6E01CEFFBDF0026E3D3 /* AppDelegate.swift in Sources */,
+				ED54B7201CF121570026E3D3 /* Store.swift in Sources */,
+				EDE87B131CF128D7008D3995 /* StoreProducts.swift in Sources */,
 				ED54B7001CF009E00026E3D3 /* Connection.swift in Sources */,
 				ED54B6E81CEFFBDF0026E3D3 /* turtle_ninjas.xcdatamodeld in Sources */,
 			);
@@ -393,6 +401,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myProjects.turtle-ninjas";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -405,6 +414,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "myProjects.turtle-ninjas";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

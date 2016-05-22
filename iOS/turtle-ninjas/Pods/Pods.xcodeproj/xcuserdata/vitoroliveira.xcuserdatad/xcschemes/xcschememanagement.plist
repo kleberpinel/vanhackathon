@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>HanekeSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-turtle-ninjas.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>8A2393D21D39DBE831D8370926FC3AE2</key>
+		<key>04FB4FDCFBEF44F36BBF8E3B84ED7CEE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD11234C68E690F8FB08826FB229BEE9</key>
+		<key>767D07C6341934AC7D21AB1928718D7A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E7B5272884BDB073EDC75B8BA3C69580</key>
+		<key>7DDF79495F24B309AF089ACC99FC1151</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9ADD24650A634A0F6D4BF58CB9CCCC46</key>
 		<dict>
 			<key>primary</key>
 			<true/>
