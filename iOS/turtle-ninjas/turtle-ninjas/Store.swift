@@ -26,6 +26,7 @@ class Store: UIViewController {
     @IBOutlet weak var storeName: UILabel!
     @IBOutlet weak var totalAmount: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var viewActivityIndicator: UIActivityIndicatorView!
     
     var store_id : Int!
     
@@ -37,23 +38,18 @@ class Store: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewActivityIndicator.startAnimating()
+        
         let url = "\(self.global.base_url)/merchants/\(store_id)"
         self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
             self.products_json = response
             dispatch_async(dispatch_get_main_queue(), {
                 self.storeName.text = response["name"].stringValue
                 self.tableView.reloadData()
+                self.viewActivityIndicator.stopAnimating()
             })
         }
         
-    }
-    
-    @IBAction func addItemToCart(sender: AnyObject) {
-        self.manageCart(CartManager.ADD, row: sender.tag)
-    }
-    
-    @IBAction func removeItem(sender: AnyObject) {
-        self.manageCart(CartManager.DELETE, row: sender.tag)
     }
     
     func manageCart(option: CartManager, row: Int){
@@ -73,9 +69,20 @@ class Store: UIViewController {
         }
         
         self.cartData.items[row] = String(quantity)
-        
         cell.productQuantity.text = String(quantity)
         
+    }
+    
+    //
+    // mark: actions
+    //
+    
+    @IBAction func addItemToCart(sender: AnyObject) {
+        self.manageCart(CartManager.ADD, row: sender.tag)
+    }
+    
+    @IBAction func removeItem(sender: AnyObject) {
+        self.manageCart(CartManager.DELETE, row: sender.tag)
     }
     
     //

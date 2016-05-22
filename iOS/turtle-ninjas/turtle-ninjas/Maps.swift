@@ -39,11 +39,6 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         super.viewDidAppear(true)
         self.loadAnnotations(stores!)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
      
@@ -86,15 +81,24 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     }
     
     func showFooter(sender: UITapGestureRecognizer? = nil) {
-        let rating = self.stores![sender!.view!.tag].rate_score
-        self.selectedStore = Int(self.stores![sender!.view!.tag].id)
+       
+        let row = sender!.view!.tag
+        let rating = self.stores![row].rate_score
+        
+        self.selectedStore = Int(self.stores![row].id)
+        
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
-            self.txtStoreName.text = self.stores![sender!.view!.tag].name
+            self.txtStoreName.text = self.stores![row].name
             self.lblRating.text = String(rating)
             self.starsRating.image = UIImage(named: "stars-\(floor(rating).format(0)).png")
         })
+        
     }
+    
+    //
+    // mark: actions
+    //
     
     @IBAction func btnSearchClick(sender: AnyObject) {
         if let search = self.txtSearch.text {
@@ -120,6 +124,10 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         }
     }
     
+    //
+    // mark: segues between views
+    //
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject?){
         if (segue.identifier=="transMapToStore"){
             if let vc = segue.destinationViewController as? Store {
@@ -132,6 +140,9 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     // mark : private functions
     //
     
+    //
+    // load annotations via Core Data
+    //
     private func loadAnnotations(stores: [Stores]) {
         if stores.count > 0 {
             for i in 0...stores.count-1 {
@@ -148,6 +159,10 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         }
     }
     
+    //
+    // load annotations after users search
+    // via json - Get request
+    //
     private func loadAnnotationsViaSearch(stores: (JSON)) {
         if stores.count > 0 {
             for i in 0...stores.count-1 {
@@ -164,6 +179,9 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         }
     }
     
+    //
+    // Location Manager
+    //
     private func startLocationManager(){
         
         self.mapView.delegate = self

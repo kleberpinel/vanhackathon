@@ -8,16 +8,18 @@
 
 import UIKit
 
-// Splash - load models
+// Splash - Load models
 class Splash: UIViewController {
 
     @IBOutlet weak var labelRefreshIcon: UIButton!
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var labelInternetConnection: UILabel!
     
-     var timer = NSTimer()
+    // timer to animate the label
+    var timer = NSTimer()
     var animationIndex = 0
     let animationDescription = ["Loading.","Loading..","Loading..."]
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class Splash: UIViewController {
             
             timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(Splash.animateLabel), userInfo: nil, repeats: true)
             
+            // populate store's model - core data
             let stores = mStores()
             stores.populate_data() { (response) in
                 dispatch_async(dispatch_get_main_queue()) {
@@ -38,10 +41,9 @@ class Splash: UIViewController {
                     self.performSegueWithIdentifier("transSplashToMap", sender: nil)
                 }
             }
+            
         } else {
-            self.labelDescription.hidden = true
-            self.labelRefreshIcon.hidden = false
-            self.labelInternetConnection.hidden = false
+            notConnected(true)
         }
     }
     

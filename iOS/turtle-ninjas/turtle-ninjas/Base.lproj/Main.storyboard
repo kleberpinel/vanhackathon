@@ -126,7 +126,7 @@
                                             <constraint firstAttribute="height" constant="43" id="xxy-RM-svV"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heirloom Vegetariam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGP-fH-qXd">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGP-fH-qXd">
                                         <rect key="frame" x="55" y="15" width="464" height="21"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -140,7 +140,7 @@
                                             <constraint firstAttribute="width" constant="64" id="ydj-hc-2KD"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJE-dl-tlG">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJE-dl-tlG">
                                         <rect key="frame" x="12" y="41" width="42" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LQx-1P-fXu"/>
@@ -267,8 +267,8 @@
                                 </constraints>
                                 <state key="normal" image="BTN-checkout"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06i-jk-xAL">
-                                <rect key="frame" x="556" y="32" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06i-jk-xAL">
+                                <rect key="frame" x="556" y="32" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="G9I-DD-GES"/>
                                     <constraint firstAttribute="height" constant="24" id="GNB-k1-tPw"/>
@@ -423,6 +423,9 @@
                                     <outlet property="delegate" destination="naS-zd-QG3" id="oMv-Py-cqz"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xDb-tv-cQW">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -435,6 +438,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="06i-jk-xAL" secondAttribute="trailing" id="CY1-XG-qYK"/>
                             <constraint firstItem="WVL-k4-Og2" firstAttribute="top" secondItem="PwA-hf-66W" secondAttribute="bottom" constant="55" id="FEZ-lh-hth"/>
                             <constraint firstItem="7dh-sc-ueP" firstAttribute="centerX" secondItem="kjb-vv-pJO" secondAttribute="centerX" id="Fam-qy-hUH"/>
+                            <constraint firstItem="xDb-tv-cQW" firstAttribute="centerY" secondItem="kjb-vv-pJO" secondAttribute="centerY" id="JSm-FS-URL"/>
                             <constraint firstItem="PwA-hf-66W" firstAttribute="centerX" secondItem="kjb-vv-pJO" secondAttribute="centerX" id="Kv1-jN-IM2"/>
                             <constraint firstItem="1Bc-ii-VLR" firstAttribute="top" secondItem="PwA-hf-66W" secondAttribute="bottom" constant="134" id="TKX-Su-UyR"/>
                             <constraint firstItem="xYw-i5-7qB" firstAttribute="leading" secondItem="kjb-vv-pJO" secondAttribute="leadingMargin" id="VZG-sV-xfp"/>
@@ -445,6 +449,7 @@
                             <constraint firstItem="HLK-8D-R6m" firstAttribute="top" secondItem="PwA-hf-66W" secondAttribute="bottom" constant="18" id="i8w-bE-jYK"/>
                             <constraint firstItem="PwA-hf-66W" firstAttribute="top" secondItem="bdj-mr-erV" secondAttribute="bottom" constant="53" id="lPR-25-X3B"/>
                             <constraint firstItem="06i-jk-xAL" firstAttribute="top" secondItem="bdj-mr-erV" secondAttribute="bottom" constant="12" id="swQ-bJ-Tow"/>
+                            <constraint firstItem="xDb-tv-cQW" firstAttribute="centerX" secondItem="kjb-vv-pJO" secondAttribute="centerX" id="wOW-Iu-Blh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HLK-8D-R6m" secondAttribute="trailing" id="xzA-BK-0hO"/>
                         </constraints>
                     </view>
@@ -452,6 +457,7 @@
                         <outlet property="storeName" destination="j9E-Ps-Qgv" id="xfA-Po-Yld"/>
                         <outlet property="tableView" destination="PwA-hf-66W" id="rRP-5d-Jxp"/>
                         <outlet property="totalAmount" destination="HLK-8D-R6m" id="WxX-oj-dbg"/>
+                        <outlet property="viewActivityIndicator" destination="xDb-tv-cQW" id="nVy-hN-eHW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WVo-nG-97u" userLabel="First Responder" sceneMemberID="firstResponder"/>
