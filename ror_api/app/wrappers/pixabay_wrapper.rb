@@ -6,7 +6,7 @@ class PixabayWrapper
   end
 
   def find_image(q)
-    url = @url + "#{q}"
+    url = @url + "&q=#{q}"
     response = HTTParty.get(NormalizeUrl.process(url))
     json = response.body
     if PixabayWrapper.valid_json?(json)
