@@ -1,10 +1,14 @@
 class SearchService
 
-  def initialize(field)
-    @field = field
+  def initialize(q)
+    @q = q
   end
 
-  def search
+  def find
+    query = "%#{@q}%"
     
+    Merchant.includes(:products)
+      .where("merchants.name ILIKE ? or products.name ILIKE ?", query, query)
+      .references(:products)
   end
 end

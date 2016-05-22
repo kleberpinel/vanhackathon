@@ -1,8 +1,12 @@
-class SearchsController < ApplicationController
+class SearchController < ApplicationController
   
   def index
-    @field = params[:field]
+    render json: SearchService.new(params[:q]).find
+  end
 
-    render json: @merchants
+  def turtles
+    render json: { message: 
+      "Thurtles are here to rock in Vanckathon! https://github.com/kleberpinel/vanhackathon" 
+    }
   end
 end
