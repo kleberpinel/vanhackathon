@@ -20,6 +20,8 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var viewFooter: UIView!
     @IBOutlet weak var txtStoreName: UILabel!
+    @IBOutlet weak var starsRating: UIImageView!
+    @IBOutlet weak var lblRating: UILabel!
     //
     
     let global = Global()
@@ -84,10 +86,13 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     }
     
     func showFooter(sender: UITapGestureRecognizer? = nil) {
+        let rating = self.stores![sender!.view!.tag].rate_score
         self.selectedStore = Int(self.stores![sender!.view!.tag].id)
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
             self.txtStoreName.text = self.stores![sender!.view!.tag].name
+            self.lblRating.text = String(rating)
+            self.starsRating.image = UIImage(named: "stars-\(floor(rating).format(0)).png")
         })
     }
     
