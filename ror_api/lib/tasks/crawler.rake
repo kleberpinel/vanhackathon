@@ -11,4 +11,9 @@ namespace :crawler do
   task :populate_products => :environment do
     CrawlerService.create_products_randomicaly
   end
+
+  task :create_rate => :environment do
+    CrawlerService.create_rate_randomicaly
+  end
+  
 end

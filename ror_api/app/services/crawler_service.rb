@@ -8,7 +8,6 @@ class CrawlerService
     @itens_to_index.each do |iten|
       sleep(2.seconds)
       url = "http://api.sandbox.yellowapi.com/FindBusiness/?what=#{iten}&where=Vancouver&pg=1&dist=1&fmt=JSON&lang=en&UID=mg5twsw7yws8tbupev6vhad2&apikey=mg5twsw7yws8tbupev6vhad2"
-      # url = "http://api.yellowapi.com/FindBusiness/?what=shoes&where=Vancouver&pgLen=5&pg=1&dist=1&fmt=JSON&lang=en&UID=6h6zy72hrz6wcsmubmpzv7yn&apikey=6h6zy72hrz6wcsmubmpzv7yn"
 
       response = HTTParty.get(url)
       answer = JSON.parse(response.body)
@@ -31,7 +30,6 @@ class CrawlerService
 
         Merchant.where(params).first_or_create
       }
-      sleep(2.seconds)
     end
   end
 
@@ -80,6 +78,20 @@ class CrawlerService
           i += 1
         end
       end
+    end
+  end
+
+  def self.create_rate_randomicaly
+    Merchant.all.each do |merchant|
+      merchant.update_attributes({
+        stars: rand(1..5),
+        rate_score: (rand Math::E..Math::PI).round(2)
+      })
+      merchant.products.each{ |product|
+        product.update_attributes({
+          price: (rand Math::E..100.99).round(2)
+        })
+      }
     end
   end
 end
