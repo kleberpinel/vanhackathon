@@ -17,11 +17,15 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var txtSearch: UITextField!
+    @IBOutlet weak var viewFooter: UIView!
+    @IBOutlet weak var txtStoreName: UILabel!
     //
     
     let global = Global()
-    
     var manager = CLLocationManager()
+    
+    var store_json = JSON("")
+    var selectedStore : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +33,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
         
         let url = "\(self.global.base_url)"
         self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
+            self.store_json = response
             self.loadAnnotations(response)
         }
         
@@ -42,7 +47,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
      
         let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
-        let region = MKCoordinateRegionMakeWithDistance(location, 500.0, 700.0)
+        let region = MKCoordinateRegionMakeWithDistance(location, 1500.0, 1700.0)
         
         self.mapView.setRegion(region, animated: true)
         
@@ -64,10 +69,28 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
             pinView!.image = UIImage(named:"shopify-logo")
             pinView!.frame.size = CGSize(width: 45.0, height: 45.0)
             
+            let touchUserImage = UITapGestureRecognizer(target:self, action: #selector(Maps.showFooter(_:)))
+
+            if (annotation is CustomPointAnnotation) {
+                pinView?.tag = (annotation as! CustomPointAnnotation).tag
+            }
+            
+            pinView!.addGestureRecognizer(touchUserImage)
+            
+            
         }
         
         return pinView
         
+    }
+    
+    func showFooter(sender: UITapGestureRecognizer? = nil) {
+        self.selectedStore = sender!.view!.tag
+        dispatch_async(dispatch_get_main_queue(), {
+            self.viewFooter.hidden = false
+            print(sender!.view!.tag)
+            self.txtStoreName.text = self.store_json[sender!.view!.tag]["name"].stringValue
+        })
     }
     
     @IBAction func btnSearchClick(sender: AnyObject) {
@@ -75,7 +98,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
         if let _ = self.txtSearch.text {
             
             if self.txtSearch.text == "" {
-            //    return
+                return
             }
             
             let url = "\(self.global.base_url)"
@@ -96,13 +119,14 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
         for i in 1...stores.count {
             
             dispatch_async(dispatch_get_main_queue()) {
-                let anotation = MKPointAnnotation()
+                let anotation = CustomPointAnnotation()
                 let location  = CLLocationCoordinate2D(latitude: stores[i]["latitude"].doubleValue, longitude: stores[i]["longitude"].doubleValue)
-                    
+                
+                anotation.tag = i
                 anotation.title = stores[i]["name"].stringValue
                 anotation.subtitle = stores[i]["street"].stringValue
                 anotation.coordinate = location
-                
+                    
                 self.mapView.addAnnotation(anotation)
             }
             

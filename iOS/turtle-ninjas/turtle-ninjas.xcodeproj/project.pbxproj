@@ -18,6 +18,7 @@
 		ED54B6F71CEFFDE00026E3D3 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6F61CEFFDE00026E3D3 /* Global.swift */; };
 		ED54B7001CF009E00026E3D3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6FF1CF009E00026E3D3 /* Connection.swift */; };
 		ED54B7201CF121570026E3D3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B71F1CF121570026E3D3 /* Store.swift */; };
+		ED9E86981CF14B72008EB181 /* Pins.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E86971CF14B71008EB181 /* Pins.swift */; };
 		EDE87B131CF128D7008D3995 /* StoreProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE87B121CF128D7008D3995 /* StoreProducts.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		ED54B6F61CEFFDE00026E3D3 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		ED54B6FF1CF009E00026E3D3 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		ED54B71F1CF121570026E3D3 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		ED9E86971CF14B71008EB181 /* Pins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pins.swift; sourceTree = "<group>"; };
 		EDE87B121CF128D7008D3995 /* StoreProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProducts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				ED54B6E11CEFFBDF0026E3D3 /* Maps.swift */,
 				ED54B71F1CF121570026E3D3 /* Store.swift */,
 				EDE87B121CF128D7008D3995 /* StoreProducts.swift */,
+				ED9E86971CF14B71008EB181 /* Pins.swift */,
 			);
 			name = "View-Controlllers";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				EDE87B131CF128D7008D3995 /* StoreProducts.swift in Sources */,
 				ED54B7001CF009E00026E3D3 /* Connection.swift in Sources */,
 				ED54B6E81CEFFBDF0026E3D3 /* turtle_ninjas.xcdatamodeld in Sources */,
+				ED9E86981CF14B72008EB181 /* Pins.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
