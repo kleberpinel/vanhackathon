@@ -1,10 +1,8 @@
 PODS:
-  - HanekeSwift (0.10.1)
   - SwiftHTTP (1.0.5)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - HanekeSwift
   - SwiftHTTP (~> 1.0.4)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -18,7 +16,6 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  HanekeSwift: 08e47d3d0f2899ec58e5d257beba0de619aca9e8
   SwiftHTTP: edb45e72f27d1d95d328d2b2c16a61aa94f1e9f7
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 

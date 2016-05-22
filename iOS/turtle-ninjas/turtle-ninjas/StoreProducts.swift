@@ -17,4 +17,6 @@ class StoreProducts: UITableViewCell {
     @IBOutlet weak var plusIcon: UIButton!
     @IBOutlet weak var minusIcon: UIButton!
     
+    var imageUrl: NSURL!
+    
 }

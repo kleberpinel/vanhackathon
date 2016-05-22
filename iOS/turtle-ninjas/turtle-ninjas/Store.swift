@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import Haneke
 import SwiftyJSON
 import CoreLocation
 
@@ -100,11 +99,28 @@ class Store: UIViewController {
         
         cell.productName.text = self.products_json["products"][row]["name"].stringValue
         
-        if let avatarURL = NSURL(string: self.products_json["products"][row]["image_url"].stringValue) {
-            cell.productAvatar.hnk_setImageFromURL(avatarURL, placeholder: nil, success: { (image) -> Void in
-                cell.productAvatar.image = image
-            }, failure: { (error) -> Void in
-                cell.productAvatar.image = nil
+        if let dataNSURL = NSURL(string: self.products_json["products"][row]["image_url"].stringValue) {
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                cell.imageUrl = dataNSURL
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let image = dataNSURL.cachedImage {
+                        cell.productAvatar.image = image
+                        cell.productAvatar.alpha = 1
+                    } else {
+                        cell.productAvatar.alpha = 0
+                        dataNSURL.fetchImage { image in
+                            if cell.imageUrl == dataNSURL {
+                                cell.productAvatar.image = image
+                                UIView.animateWithDuration(0.3) {
+                                    cell.productAvatar.alpha = 1
+                                }
+                            }
+                        }
+                    }
+                })
+                
             })
         }
         

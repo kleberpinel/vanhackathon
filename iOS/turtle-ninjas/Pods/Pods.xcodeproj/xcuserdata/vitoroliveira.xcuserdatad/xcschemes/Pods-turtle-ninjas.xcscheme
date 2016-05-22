@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6B25D19836E9B1A900F4A30D'
+               BlueprintIdentifier = 'B5B2D98B3873F2A266CB336C'
                BlueprintName = 'Pods-turtle-ninjas'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_turtle_ninjas.framework'>
