@@ -20,6 +20,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var viewFooter: UIView!
     @IBOutlet weak var txtStoreName: UILabel!
+    @IBOutlet weak var txtScore: UILabel!
     //
     
     let global = Global()
@@ -88,6 +89,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
             self.txtStoreName.text = self.stores![sender!.view!.tag].name
+            self.txtScore.text = String(self.stores![sender!.view!.tag].rate_score)
         })
     }
     
