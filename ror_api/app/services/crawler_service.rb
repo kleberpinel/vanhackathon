@@ -48,6 +48,7 @@ class CrawlerService
       if merchant.products.empty?
         puts "Finding products for #{merchant.name}"
         while i < products  do
+          wait(1.seconds)
           product_name = product_name_array[rand(product_name_array.size)]
           url = "http://api.duckduckgo.com/?q=#{product_name}&format=json&pretty=1"
           
