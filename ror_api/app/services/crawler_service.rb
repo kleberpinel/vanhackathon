@@ -34,7 +34,6 @@ class CrawlerService
   end
 
   def self.create_products_randomicaly
-    puts "-- create_products_randomicaly"
     product_name_array = []
     File.readlines("#{Rails.root}/lib/data/products_name.txt").each do |line|
       product_name_array.push(line.gsub("\n",""))
@@ -93,5 +92,24 @@ class CrawlerService
         })
       }
     end
+  end
+
+  def self.find_products_images
+    Product.all.each{ |product|
+      name = product.name.split(" ")[0].gsub(/[^0-9A-Za-z]/, '')
+      url = "https://pixabay.com/api/?key=2614199-8667051b6952c194574bdfa73&q=#{name}&image_type=photo&pretty=true"
+ 
+      response = HTTParty.get(NormalizeUrl.process(url))
+      json = response.body
+      answer = json && json.length >= 2 ? JSON.parse(json) : nil
+
+      if !answer["hits"].empty?
+        hit = answer["hits"][rand(0..answer["hits"].size-1)]
+        
+        product.update_attributes({
+          image_url: hit["webformatURL"]
+        })
+      end
+    }
   end
 end
