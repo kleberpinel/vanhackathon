@@ -11,6 +11,9 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
  */
 // bower:scss
 // endbower
+body{
+  background-color: #EFEFCF;
+}
 
 .browsehappy {
   margin: 0.2em 0;
@@ -20,7 +23,6 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 }
 
 .gm-style-mtc,
-.gmnoprint,
 .gm-style-cc {
     display: none;
 }

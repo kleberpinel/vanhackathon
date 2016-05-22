@@ -1,26 +1,81 @@
 <div class="container">
     <div class="search-box">
-        <input type="search" placeholder="What are you looking for today?" class="form-control col-md-12 search" ng-model="main.search">
+        <input type="search" placeholder="What are you looking for today?" ng-class="{goLeft:main.showSide}" class="form-control col-md-12 search" ng-model="main.search" ng-model-options='{ debounce: 800 }' ng-change="main.doSearch()">
     </div>
     <ui-gmap-google-map center='main.map.center' zoom='main.map.zoom' draggable="true">
-        <ui-gmap-marker ng-repeat="home in main.markers | filter: main.search" coords="{latitude: home.latitude, longitude: home.longitude}" idkey="home.id" icon="{url: home.icon}" type="cluster" events="main.clickEventsObject" click="main.onMarkerClicked">
+        <ui-gmap-marker ng-repeat="home in main.markers| limitTo:5 | filter: main.search" coords="{latitude: home.latitude, longitude: home.longitude}" idkey="home.id" icon="{url: home.icon}" type="cluster" events="main.clickEventsObject" click="main.onMarkerClicked" options="{labelClass:'marker_labels',labelAnchor:'2 60',labelContent:home.name}">
         </ui-gmap-marker>
     </ui-gmap-google-map>
     <div ng-show="main.showSide" class="side slidein slideout">
-        <a href="#" class="side-close" ng-click="main.closeSide()">
-            <i class="glyphicon glyphicon-remove"></i>
-        </a>
-        <h1>{{main.selectedShop.data.name}}</h1>
-        <h4>Adress: {{main.selectedShop.data.street}}</h4>
-        <p>City: {{main.selectedShop.data.city}}</p>
-        <p>Province: {{main.selectedShop.data.prov}}</p>
-        Products:
-        <div class="table table-responsive">
-            <div ng-repeat="prod in main.selectedShop.data.products">
-                <div class="col-md-4">{{prod.name}}</div>
-                <div class="col-md-12">Price: {{prod.price}}</div>                                
-                <button class="btn btn-success btn-block">Buy it!</button>
+        <div class="side-header">
+            <a href="#" class="side-close" ng-click="main.closeSide()">
+                <i class="glyphicon glyphicon-remove"></i>
+            </a>
+            <div>
+                <h1>
+                    {{main.selectedShop.data.name}}
+                    <span class="badge">{{main.selectedShop.data.stars}}</span>                                 
+                </h1>
             </div>
+            <div class="col-sm-6">
+                <h4>{{main.selectedShop.data.street}}</h4>
+                <p>{{main.selectedShop.data.city}}</p>
+            </div>
+            <div class="col-sm-6">
+                <fieldset class="rating">
+                    <input type="radio" ng-checked="main.selectedShop.data.stars == '5'" id="star5" name="rating" value="5" />
+                    <label for="star5">5 stars</label>
+                    <input type="radio" ng-checked="main.selectedShop.data.stars == '4'" id="star4" name="rating" value="4" />
+                    <label for="star4">4 stars</label>
+                    <input type="radio" ng-checked="main.selectedShop.data.stars == '3'" id="star3" name="rating" value="3" />
+                    <label for="star3">3 stars</label>
+                    <input type="radio" ng-checked="main.selectedShop.data.stars == '2'" id="star2" name="rating" value="2" />
+                    <label for="star2">2 stars</label>
+                    <input type="radio" ng-checked="main.selectedShop.data.stars == '1'" id="star1" name="rating" value="1" />
+                    <label for="star1">1 star</label>
+                </fieldset>
+            </div>
+        </div>
+        <div class="side-body">
+            <div class="table table-responsive side-table">
+                <div ng-repeat="prod in main.selectedShop.data.products track by $index">
+                    <div class="row">
+                        <div class="product-image">
+                            <img class="img-responsive" height="70" width="70" ng-src="{{prod.image_url != '' && prod.image_url || 'http://placehold.it/70x70'}}">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name"><strong>{{prod.name}}</strong></h4>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-number" 
+                                        ng-disabled="main.selectedShop.data.products[$index].qt==0" data-type="minus" ng-click="main.minus($index)">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </button>
+                                </span>
+                                <input type="text" ng-model="main.selectedShop.data.products[$index].qt" class="form-control input-number" value="0" min="1" max="10">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-number" data-type="plus" ng-click="main.plus($index)">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="product-price">
+                            <h6><strong>{{prod.price_formated}}</strong></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="total">
+                <h5>
+                    Total: <span class="pull-right"><small class="text-muted">CAD </small><strong>{{main.total | currency}}</strong></span> 
+                </h5>
+                <div class="total-info">
+                    <small>Shipping and discount codes are added at checkout</small>
+                </div>
+                <button class="btn btn-success btn-block">Checkout</button>
+            </div>            
         </div>
     </div>
 </div>
