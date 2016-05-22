@@ -345,6 +345,9 @@
                                                         <action selector="removeItem:" destination="naS-zd-QG3" eventType="touchUpInside" id="ZOs-t7-J6e"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6bR-di-Phy">
+                                                    <rect key="frame" x="42" y="39" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="QNh-Ao-fne" firstAttribute="leading" secondItem="KLT-VR-8z7" secondAttribute="trailing" constant="11" id="6Hw-xV-jsl"/>
@@ -352,7 +355,9 @@
                                                 <constraint firstItem="egR-LQ-wvy" firstAttribute="leading" secondItem="MvJ-fO-C2K" secondAttribute="trailing" constant="-2" id="CoO-h1-n0Q"/>
                                                 <constraint firstItem="rDT-Zt-n5g" firstAttribute="leading" secondItem="rRW-Ig-MlA" secondAttribute="trailing" constant="1" id="G8C-h1-UXD"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="KLT-VR-8z7" secondAttribute="bottom" constant="11" id="N6g-yC-DWP"/>
+                                                <constraint firstItem="6bR-di-Phy" firstAttribute="leading" secondItem="cbC-wb-fiw" secondAttribute="leadingMargin" constant="34" id="SC8-ky-6IJ"/>
                                                 <constraint firstItem="Rac-3d-CO5" firstAttribute="top" secondItem="rRW-Ig-MlA" secondAttribute="bottom" constant="9" id="Sgu-qI-7hH"/>
+                                                <constraint firstItem="6bR-di-Phy" firstAttribute="top" secondItem="cbC-wb-fiw" secondAttribute="topMargin" constant="31" id="T7Q-uF-iKn"/>
                                                 <constraint firstItem="egR-LQ-wvy" firstAttribute="top" secondItem="rRW-Ig-MlA" secondAttribute="bottom" constant="8" id="eEO-wT-9Yw"/>
                                                 <constraint firstItem="KLT-VR-8z7" firstAttribute="leading" secondItem="cbC-wb-fiw" secondAttribute="leadingMargin" constant="10" id="eS4-Pr-ea5"/>
                                                 <constraint firstItem="MvJ-fO-C2K" firstAttribute="top" secondItem="rRW-Ig-MlA" secondAttribute="bottom" constant="8" id="eaH-Hz-aBD"/>
@@ -368,6 +373,7 @@
                                             <constraint firstAttribute="bottom" secondItem="rDT-Zt-n5g" secondAttribute="bottom" constant="33" id="rQ2-7p-e2Z"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="6bR-di-Phy" id="W1h-wz-gdW"/>
                                             <outlet property="minusIcon" destination="QNh-Ao-fne" id="A6A-sE-pAf"/>
                                             <outlet property="plusIcon" destination="egR-LQ-wvy" id="xjN-Qb-Je6"/>
                                             <outlet property="productAvatar" destination="KLT-VR-8z7" id="kt9-yZ-2Hj"/>
@@ -431,6 +437,6 @@
         <image name="x-66" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8b5-n7-fqZ"/>
+        <segue reference="jgK-lY-8Pm"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -102,12 +102,15 @@ class Store: UIViewController {
         if let dataNSURL = NSURL(string: self.products_json["products"][row]["image_url"].stringValue) {
             dispatch_async(dispatch_get_main_queue(), {
                 
+                cell.activityIndicator.startAnimating()
+                
                 cell.imageUrl = dataNSURL
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     if let image = dataNSURL.cachedImage {
                         cell.productAvatar.image = image
                         cell.productAvatar.alpha = 1
+                        cell.activityIndicator.stopAnimating()
                     } else {
                         cell.productAvatar.alpha = 0
                         dataNSURL.fetchImage { image in
@@ -115,6 +118,7 @@ class Store: UIViewController {
                                 cell.productAvatar.image = image
                                 UIView.animateWithDuration(0.3) {
                                     cell.productAvatar.alpha = 1
+                                    cell.activityIndicator.stopAnimating()
                                 }
                             }
                         }

@@ -16,6 +16,7 @@ class StoreProducts: UITableViewCell {
     @IBOutlet weak var productQuantity: UILabel!
     @IBOutlet weak var plusIcon: UIButton!
     @IBOutlet weak var minusIcon: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var imageUrl: NSURL!
     
