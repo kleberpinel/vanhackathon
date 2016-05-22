@@ -119,13 +119,6 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBs-7C-Ox8">
                                 <rect key="frame" x="0.0" y="532" width="600" height="68"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BTN-Buy" translatesAutoresizingMaskIntoConstraints="NO" id="hxh-Bl-cVS">
-                                        <rect key="frame" x="528" y="-1" width="66" height="66"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="66" id="CVg-gG-4jf"/>
-                                            <constraint firstAttribute="width" constant="66" id="ydj-hc-2KD"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heirloom Vegetariam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGP-fH-qXd">
                                         <rect key="frame" x="64" y="21" width="459" height="21"/>
                                         <gestureRecognizers/>
@@ -140,13 +133,20 @@
                                             <constraint firstAttribute="height" constant="48" id="xxy-RM-svV"/>
                                         </constraints>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BTN-Buy" translatesAutoresizingMaskIntoConstraints="NO" id="hxh-Bl-cVS">
+                                        <rect key="frame" x="540" y="6" width="52" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="CVg-gG-4jf"/>
+                                            <constraint firstAttribute="width" constant="52" id="ydj-hc-2KD"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="cGP-fH-qXd" firstAttribute="top" secondItem="zBs-7C-Ox8" secondAttribute="top" constant="21" id="X3Z-Ws-xRg"/>
                                     <constraint firstAttribute="height" constant="68" id="X6P-oO-xdr"/>
-                                    <constraint firstItem="hxh-Bl-cVS" firstAttribute="leading" secondItem="cGP-fH-qXd" secondAttribute="trailing" constant="5" id="l8W-lc-liI"/>
+                                    <constraint firstItem="hxh-Bl-cVS" firstAttribute="leading" secondItem="cGP-fH-qXd" secondAttribute="trailing" constant="17" id="l8W-lc-liI"/>
                                     <constraint firstItem="cGP-fH-qXd" firstAttribute="leading" secondItem="9m4-kK-RPP" secondAttribute="trailing" constant="8" id="qIX-LW-1bP"/>
                                     <constraint firstItem="9m4-kK-RPP" firstAttribute="leading" secondItem="zBs-7C-Ox8" secondAttribute="leading" constant="8" id="v8M-LZ-1H2"/>
                                     <constraint firstAttribute="bottom" secondItem="9m4-kK-RPP" secondAttribute="bottom" constant="12" id="zRX-4a-AQY"/>
@@ -161,7 +161,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xxn-r9-CvI" secondAttribute="bottom" id="6Sg-WJ-erK"/>
                             <constraint firstAttribute="trailing" secondItem="Xxn-r9-CvI" secondAttribute="trailing" id="Ebi-oR-ZAQ"/>
                             <constraint firstItem="jld-0O-Art" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="132" id="GlE-5N-3tc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hxh-Bl-cVS" secondAttribute="trailing" constant="-14" id="HSv-d3-0XW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hxh-Bl-cVS" secondAttribute="trailing" constant="-12" id="HSv-d3-0XW"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zBs-7C-Ox8" secondAttribute="bottom" id="HcQ-GR-bPj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cGP-fH-qXd" secondAttribute="bottom" constant="26" id="LeQ-YU-kTm"/>
                             <constraint firstItem="Xxn-r9-CvI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PEt-ue-L3f"/>
@@ -172,7 +172,7 @@
                             <constraint firstItem="zBs-7C-Ox8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="m1r-4c-udv"/>
                             <constraint firstItem="jld-0O-Art" firstAttribute="bottom" secondItem="PjQ-ip-1Ah" secondAttribute="bottom" constant="-7" id="ngn-UR-fsP"/>
                             <constraint firstItem="jld-0O-Art" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="rWu-KL-glT"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hxh-Bl-cVS" secondAttribute="bottom" constant="3" id="w5k-lu-039"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hxh-Bl-cVS" secondAttribute="bottom" constant="10" id="w5k-lu-039"/>
                         </constraints>
                     </view>
                     <connections>

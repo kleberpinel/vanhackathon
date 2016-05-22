@@ -75,7 +75,6 @@ class Store: UIViewController {
         self.cartData.items[row] = String(quantity)
         
         cell.productQuantity.text = String(quantity)
-        cell.productPrice.text = "$" + (price * Float(quantity)).format(2)
         
     }
     
@@ -128,16 +127,12 @@ class Store: UIViewController {
             })
         }
         
+        cell.productPrice.text = "$" + self.products_json["products"][row]["price"].floatValue.format(2)
+        
         cell.minusIcon.tag = row
         cell.plusIcon.tag = row
         
-        if (self.cartData.items[row] != nil) {
-            cell.productQuantity.text = self.cartData.items[row]
-            cell.productPrice.text = "$" + String(Double(self.cartData.items[row]!)! * self.products_json["products"][row]["price"].doubleValue)
-        } else {
-            cell.productQuantity.text = "0"
-            cell.productPrice.text = "$0.00"
-        }
+        (self.cartData.items[row] != nil) ? (cell.productQuantity.text = self.cartData.items[row]) : (cell.productQuantity.text = "0")
         
         if self.cartData.indexPaths[indexPath.row] != indexPath {
             self.cartData.indexPaths[indexPath.row] = indexPath
