@@ -9,3 +9,5 @@ gem 'spring', :group => :development
 
 gem 'pg'
 gem 'httparty'
+gem 'faker'
+gem 'active_model_serializers'

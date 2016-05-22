@@ -6,6 +6,7 @@ class CreateMerchants < ActiveRecord::Migration
       t.string :city
       t.string :prov
       t.string :pcode
+      t.string :category
       t.float :latitude
       t.float :longitude
 
