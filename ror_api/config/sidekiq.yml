@@ -1,0 +1,10 @@
+---
+:verbose: false
+:logfile: ./log/sidekiq.log
+:concurrency: 50
+:pidfile: ./tmp/pids/sidekiq.pid
+:queues:
+  - default
+  - [high_priority, 2]
+  - [mailers, 3]
+  - [communication_messages, 3]

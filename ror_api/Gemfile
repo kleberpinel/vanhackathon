@@ -13,4 +13,15 @@ gem 'faker'
 gem 'active_model_serializers'
 gem 'normalize_url'
 
+gem 'sidekiq'
+gem 'sinatra', :require => nil
+
+gem 'factory_girl_rails', '~> 4.2.1'
+
 gem 'rack-cors', :require => 'rack/cors'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.4.0'
+  gem 'rspec-activemodel-mocks'
+  gem "fakeredis", require: "fakeredis/rspec"
+end
