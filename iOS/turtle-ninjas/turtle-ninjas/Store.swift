@@ -17,6 +17,11 @@ enum CartManager {
     case DELETE
 }
 
+struct CartData {
+    var indexPaths = [Int: NSIndexPath]()
+    var items = [Int: String]()
+}
+
 class Store: UIViewController {
     
     @IBOutlet weak var storeName: UILabel!
@@ -24,9 +29,10 @@ class Store: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var store_id : Int!
-    var indexPaths : [NSIndexPath] = []
     
     let global = Global()
+    var cartData = CartData()
+    
     var products_json = JSON("")
     
     override func viewDidLoad() {
@@ -41,8 +47,6 @@ class Store: UIViewController {
             })
         }
         
-        self.totalAmount.text = "0"
-        
     }
     
     @IBAction func addItemToCart(sender: AnyObject) {
@@ -56,7 +60,7 @@ class Store: UIViewController {
     func manageCart(option: CartManager, row: Int){
         
         var quantity = 0
-        let cell = self.tableView.cellForRowAtIndexPath(indexPaths[row])! as! StoreProducts
+        let cell = self.tableView.cellForRowAtIndexPath(cartData.indexPaths[row]!)! as! StoreProducts
         let price = self.products_json["products"][row]["price"].floatValue
         
         if option == .ADD {
@@ -68,6 +72,8 @@ class Store: UIViewController {
                 self.totalAmount.text = String(Float(totalAmount.text!)! - price)
             }
         }
+        
+        self.cartData.items[row] = String(quantity)
         
         cell.productQuantity.text = String(quantity)
         cell.productPrice.text = "$" + String(price * Float(quantity))
@@ -105,7 +111,17 @@ class Store: UIViewController {
         cell.minusIcon.tag = row
         cell.plusIcon.tag = row
         
-        indexPaths.append(indexPath)
+        if (self.cartData.items[row] != nil) {
+            cell.productQuantity.text = self.cartData.items[row]
+            cell.productPrice.text = String(Double(self.cartData.items[row]!)! * self.products_json["products"][row]["price"].doubleValue)
+        } else {
+            cell.productQuantity.text = "0"
+            cell.productPrice.text = "$0.00"
+        }
+        
+        if self.cartData.indexPaths[indexPath.row] != indexPath {
+            self.cartData.indexPaths[indexPath.row] = indexPath
+        }
         
         return cell
         
