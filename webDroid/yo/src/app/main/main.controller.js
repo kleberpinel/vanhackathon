@@ -40,8 +40,7 @@
             vm.showSide = false;
         }
 
-        function doSearch() {
-
+        function doSearch(vm.search) {
             StoreService.Search().then(function(data) {
                 vm.markers = data;
                 //$log.debug("data", data);                        

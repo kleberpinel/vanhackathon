@@ -9,12 +9,12 @@
         service.Search = Search;
         return service;
 
-        function Search() {
-            return $http.get(url()).then(handleSuccess, handleError('Error getting stores'));          
+        function Search(q) {
+            return $http.get(url(q)).then(handleSuccess, handleError('Error getting stores'));          
         }
 
-        function url() {
-            return API;
+        function url(q) {
+            return API + '?q=' + q;
         }
         
 
