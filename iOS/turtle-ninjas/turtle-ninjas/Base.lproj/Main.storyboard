@@ -17,7 +17,32 @@
                     <view key="view" contentMode="scaleToFill" id="8AT-6O-udR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-66" translatesAutoresizingMaskIntoConstraints="NO" id="3EG-iC-bcQ">
+                                <rect key="frame" x="267" y="267" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="3S3-KZ-LiD"/>
+                                    <constraint firstAttribute="height" constant="66" id="o7e-6e-VL5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading stores..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4K-E1-QYW">
+                                <rect key="frame" x="263" y="335" width="75" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="OXz-hE-SyR"/>
+                                    <constraint firstAttribute="width" constant="75" id="ufH-9U-oSj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.1764705882352941" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3EG-iC-bcQ" firstAttribute="centerY" secondItem="8AT-6O-udR" secondAttribute="centerY" id="JXH-ey-hrY"/>
+                            <constraint firstItem="3EG-iC-bcQ" firstAttribute="centerX" secondItem="8AT-6O-udR" secondAttribute="centerX" id="aj0-Sa-B60"/>
+                            <constraint firstItem="L4K-E1-QYW" firstAttribute="centerX" secondItem="8AT-6O-udR" secondAttribute="centerX" id="fZD-x8-Ly6"/>
+                            <constraint firstItem="L4K-E1-QYW" firstAttribute="top" secondItem="3EG-iC-bcQ" secondAttribute="bottom" constant="2" id="toT-xp-hre"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="transSplashToMap" id="8b5-n7-fqZ"/>
@@ -63,7 +88,7 @@
                                     <action selector="btnSearchClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RO8-HF-wnj"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBs-7C-Ox8">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBs-7C-Ox8">
                                 <rect key="frame" x="0.0" y="530" width="600" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BTN-Buy" translatesAutoresizingMaskIntoConstraints="NO" id="hxh-Bl-cVS">
@@ -209,7 +234,7 @@
                                     <constraint firstAttribute="width" constant="53" id="q0i-0M-Kqf"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLK-8D-R6m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLK-8D-R6m">
                                 <rect key="frame" x="490" y="484" width="90" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="90" id="4Mu-r3-Gyd"/>
@@ -353,6 +378,7 @@
         <image name="BTN-checkout" width="311" height="43"/>
         <image name="Store-icon" width="66" height="66"/>
         <image name="ic_search" width="22" height="22"/>
+        <image name="logo-66" width="66" height="66"/>
         <image name="more-less" width="92" height="24"/>
         <image name="product-test" width="68" height="72"/>
         <image name="x-66" width="66" height="66"/>

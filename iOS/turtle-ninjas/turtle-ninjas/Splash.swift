@@ -17,7 +17,7 @@ class Splash: UIViewController {
         let stores = mStores()
         stores.populate_data()
         
-        NSTimer.scheduledTimerWithTimeInterval(8, target: self, selector: #selector(Splash.goToMap), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: #selector(Splash.goToMap), userInfo: nil, repeats: true)
             
     }
     

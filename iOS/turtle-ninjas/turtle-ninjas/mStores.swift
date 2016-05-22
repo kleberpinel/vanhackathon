@@ -18,7 +18,7 @@ class mStores {
     
     func populate_data(){
         self.modelHelper.delete_all("Stores")
-        self.global.request("\(self.global.base_url)", params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
+        self.global.request("\(self.global.base_url)/search", params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
             if response.count > 0 {
                 for i in 0...response.count-1 {
                     let stores = NSEntityDescription.insertNewObjectForEntityForName("Stores", inManagedObjectContext: self.managedContext) as! Stores
