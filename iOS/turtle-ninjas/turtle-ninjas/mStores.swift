@@ -29,6 +29,7 @@ class mStores {
                     stores.category = response[i]["category"].stringValue
                     stores.latitude = response[i]["latitude"].doubleValue
                     stores.longitude = response[i]["longitude"].doubleValue
+                    stores.rate_score = response[i]["rate_score"].floatValue
                 }
                 
                 do {

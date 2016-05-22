@@ -18,4 +18,5 @@ public class Stores: NSManagedObject {
     @NSManaged var category: String
     @NSManaged var latitude: Double
     @NSManaged var longitude: Double
+    @NSManaged var rate_score: Float
 }
