@@ -36,6 +36,7 @@ class CrawlerService
   end
 
   def self.create_products_randomicaly
+    puts "-- create_products_randomicaly"
     product_name_array = []
     File.readlines("#{Rails.root}/lib/data/products_name.txt").each do |line|
       product_name_array.push(line.gsub("\n",""))
