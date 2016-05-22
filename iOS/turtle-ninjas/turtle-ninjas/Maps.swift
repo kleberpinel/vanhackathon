@@ -12,7 +12,7 @@ import CoreData
 import SwiftyJSON
 import CoreLocation
 
-class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate  {
+class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
 
     // outlets
     @IBOutlet weak var mapView: MKMapView!
@@ -92,15 +92,14 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     }
     
     @IBAction func btnSearchClick(sender: AnyObject) {
-    
         if let search = self.txtSearch.text {
             
             if search == "" {
                 return
             }
             
-            let url = "\(self.global.base_url)/search"
-            self.global.request(url, params: ["q": search], headers: nil, type: HTTPTYPE.GET) { (response) in
+            let url = "\(self.global.base_url)/search?q=\(search)"
+            self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
                 dispatch_async(dispatch_get_main_queue(), {
                     self.mapView.removeAnnotations(self.mapView.annotations)
                 })
@@ -108,7 +107,6 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
             }
             
         }
-        
     }
     
     @IBAction func tapFooterView(sender: AnyObject) {
@@ -130,29 +128,33 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     //
     
     private func loadAnnotations(stores: [Stores]) {
-        for i in 0...stores.count-1 {
-            dispatch_async(dispatch_get_main_queue()) {
-                let anotation = CustomPointAnnotation()
-                let location  = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
+        if stores.count > 0 {
+            for i in 0...stores.count-1 {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let anotation = CustomPointAnnotation()
+                    let location  = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
                 
-                anotation.tag = i
-                anotation.coordinate = location
+                    anotation.tag = i
+                    anotation.coordinate = location
                 
-                self.mapView.addAnnotation(anotation)
+                    self.mapView.addAnnotation(anotation)
+                }
             }
         }
     }
     
     private func loadAnnotationsViaSearch(stores: (JSON)) {
-        for i in 0...stores.count-1 {
-            dispatch_async(dispatch_get_main_queue()) {
-                let anotation = CustomPointAnnotation()
-                let location  = CLLocationCoordinate2D(latitude: stores[i]["latitude"].doubleValue, longitude: stores[i]["longitude"].doubleValue)
+        if stores.count > 0 {
+            for i in 0...stores.count-1 {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let anotation = CustomPointAnnotation()
+                    let location  = CLLocationCoordinate2D(latitude: stores[i]["latitude"].doubleValue, longitude: stores[i]["longitude"].doubleValue)
                 
-                anotation.tag = i
-                anotation.coordinate = location
+                    anotation.tag = i
+                    anotation.coordinate = location
                 
-                self.mapView.addAnnotation(anotation)
+                    self.mapView.addAnnotation(anotation)
+                }
             }
         }
     }
