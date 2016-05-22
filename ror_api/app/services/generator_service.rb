@@ -16,14 +16,16 @@ class GeneratorService
 
   def self.find_products_images
     Product.all.each{ |product|
-      answer = PixabayIntegrator.new.find_image(name)
-
-      if !answer["hits"].empty?
-        hit = answer["hits"][rand(0..answer["hits"].size-1)]
-        
-        product.update_attributes({
-          image_url: hit["webformatURL"]
-        })
+      if product.image_url == ""
+        name = product.name.split(" ")[0].gsub(/[^0-9A-Za-z]/, '')
+        pixabay_wrapper = PixabayWrapper.new
+        pixabay_wrapper.find_image(name)
+        if !pixabay_wrapper.hits.empty?
+          hit = pixabay_wrapper.hit_rand
+          product.update_attributes({
+            image_url: hit["webformatURL"]
+          })
+        end
       end
     }
   end
