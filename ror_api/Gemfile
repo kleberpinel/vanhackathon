@@ -13,4 +13,7 @@ gem 'faker'
 gem 'active_model_serializers'
 gem 'normalize_url'
 
+gem 'sidekiq'
+gem 'sinatra', :require => nil
+
 gem 'rack-cors', :require => 'rack/cors'

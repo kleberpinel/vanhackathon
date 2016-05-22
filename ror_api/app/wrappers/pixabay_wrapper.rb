@@ -6,13 +6,20 @@ class PixabayWrapper
   end
 
   def find_image(q)
-    begin
-      url = @url + "#{q}"
-      response = HTTParty.get(NormalizeUrl.process(url))
-      json = response.body
+    url = @url + "#{q}"
+    response = HTTParty.get(NormalizeUrl.process(url))
+    json = response.body
+    if PixabayWrapper.valid_json?(json)
       @answer = json && json.length >= 2 ? JSON.parse(json) : nil
-    rescue => error
-      puts error.inspect
+    end
+  end
+
+  def self.valid_json?(json)
+    begin
+      JSON.parse(json)
+      return true
+    rescue JSON::ParserError => e
+      return false
     end
   end
 
