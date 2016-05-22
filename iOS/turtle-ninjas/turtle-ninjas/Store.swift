@@ -32,6 +32,9 @@ class Store: UIViewController {
         
     }
     
+    @IBAction func backButtonClick(sender: AnyObject) {
+    }
+    
     @IBAction func checkoutButtonClick(sender: AnyObject) {
     }
     
@@ -44,23 +47,20 @@ class Store: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.products_json.count
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return tableView.frame.height
+        //return self.products_json.count
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Products", forIndexPath: indexPath) as! StoreProducts
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("nProducts", forIndexPath: indexPath) as! StoreProducts
         
         let row = indexPath.row
         
-        cell.productName.text = self.products_json[row].stringValue
-        cell.productPrice.text = self.products_json[row].stringValue
+    //    cell.productName.text = self.products_json[row]["productName"].stringValue
+    //    cell.productPrice.text = self.products_json[row]["productPrice"].stringValue
         
-        if let avatarURL = NSURL(string: self.products_json[row].stringValue) {
+        if let avatarURL = NSURL(string: self.products_json[row]["avatarURL"].stringValue) {
             cell.productAvatar.hnk_setImageFromURL(avatarURL, placeholder: nil, success: { (image) -> Void in
                 cell.productAvatar.image = image
             }, failure: { (error) -> Void in
@@ -70,9 +70,6 @@ class Store: UIViewController {
         
         return cell
         
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     }
     
 }
