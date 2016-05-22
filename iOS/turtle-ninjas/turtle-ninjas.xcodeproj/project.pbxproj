@@ -19,6 +19,10 @@
 		ED54B7001CF009E00026E3D3 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B6FF1CF009E00026E3D3 /* Connection.swift */; };
 		ED54B7201CF121570026E3D3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54B71F1CF121570026E3D3 /* Store.swift */; };
 		ED9E86981CF14B72008EB181 /* Pins.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E86971CF14B71008EB181 /* Pins.swift */; };
+		ED9E869A1CF15F52008EB181 /* mStores.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E86991CF15F52008EB181 /* mStores.swift */; };
+		ED9E869C1CF15FA4008EB181 /* ModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E869B1CF15FA4008EB181 /* ModelHelper.swift */; };
+		ED9E869E1CF160A9008EB181 /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E869D1CF160A9008EB181 /* Schema.swift */; };
+		ED9E86A01CF16F3B008EB181 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E869F1CF16F3B008EB181 /* Splash.swift */; };
 		EDE87B131CF128D7008D3995 /* StoreProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE87B121CF128D7008D3995 /* StoreProducts.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +43,10 @@
 		ED54B6FF1CF009E00026E3D3 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		ED54B71F1CF121570026E3D3 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		ED9E86971CF14B71008EB181 /* Pins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pins.swift; sourceTree = "<group>"; };
+		ED9E86991CF15F52008EB181 /* mStores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mStores.swift; sourceTree = "<group>"; };
+		ED9E869B1CF15FA4008EB181 /* ModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelHelper.swift; sourceTree = "<group>"; };
+		ED9E869D1CF160A9008EB181 /* Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
+		ED9E869F1CF16F3B008EB181 /* Splash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
 		EDE87B121CF128D7008D3995 /* StoreProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreProducts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +114,7 @@
 			children = (
 				ED54B6FF1CF009E00026E3D3 /* Connection.swift */,
 				ED54B6F61CEFFDE00026E3D3 /* Global.swift */,
+				ED9E869B1CF15FA4008EB181 /* ModelHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -133,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				ED54B6E61CEFFBDF0026E3D3 /* turtle_ninjas.xcdatamodeld */,
+				ED9E86991CF15F52008EB181 /* mStores.swift */,
+				ED9E869D1CF160A9008EB181 /* Schema.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -144,6 +155,7 @@
 				ED54B71F1CF121570026E3D3 /* Store.swift */,
 				EDE87B121CF128D7008D3995 /* StoreProducts.swift */,
 				ED9E86971CF14B71008EB181 /* Pins.swift */,
+				ED9E869F1CF16F3B008EB181 /* Splash.swift */,
 			);
 			name = "View-Controlllers";
 			sourceTree = "<group>";
@@ -281,13 +293,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED54B6F71CEFFDE00026E3D3 /* Global.swift in Sources */,
+				ED9E869C1CF15FA4008EB181 /* ModelHelper.swift in Sources */,
 				ED54B6E21CEFFBDF0026E3D3 /* Maps.swift in Sources */,
 				ED54B6E01CEFFBDF0026E3D3 /* AppDelegate.swift in Sources */,
+				ED9E869E1CF160A9008EB181 /* Schema.swift in Sources */,
 				ED54B7201CF121570026E3D3 /* Store.swift in Sources */,
 				EDE87B131CF128D7008D3995 /* StoreProducts.swift in Sources */,
 				ED54B7001CF009E00026E3D3 /* Connection.swift in Sources */,
 				ED54B6E81CEFFBDF0026E3D3 /* turtle_ninjas.xcdatamodeld in Sources */,
 				ED9E86981CF14B72008EB181 /* Pins.swift in Sources */,
+				ED9E86A01CF16F3B008EB181 /* Splash.swift in Sources */,
+				ED9E869A1CF15F52008EB181 /* mStores.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
