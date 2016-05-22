@@ -15,6 +15,10 @@ class Splash: UIViewController {
     @IBOutlet weak var labelDescription: UILabel!
     @IBOutlet weak var labelInternetConnection: UILabel!
     
+     var timer = NSTimer()
+    var animationIndex = 0
+    let animationDescription = ["Loading.","Loading..","Loading..."]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.load_data()
@@ -22,10 +26,15 @@ class Splash: UIViewController {
     
     func load_data(){
         if Connection.isON() {
+            
             notConnected(false)
+            
+            timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(Splash.animateLabel), userInfo: nil, repeats: true)
+            
             let stores = mStores()
             stores.populate_data() { (response) in
                 dispatch_async(dispatch_get_main_queue()) {
+                    self.timer.invalidate()
                     self.performSegueWithIdentifier("transSplashToMap", sender: nil)
                 }
             }
@@ -37,7 +46,17 @@ class Splash: UIViewController {
     }
     
     @IBAction func refreshIconClick(sender: AnyObject) {
-        load_data()
+        self.load_data()
+    }
+    
+    
+    func animateLabel(){
+        if animationIndex == 3 {
+            animationIndex = 0
+        } else {
+            self.labelDescription.text = animationDescription[animationIndex]
+            animationIndex += 1
+        }
     }
     
     // hide and show label if the internet is on or off
