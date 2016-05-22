@@ -16,8 +16,10 @@ class mStores {
     
     private let managedContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    func populate_data(){
+    func populate_data(completion:(Bool) -> Void)  {
+            
         self.modelHelper.delete_all("Stores")
+        
         self.global.request("\(self.global.base_url)/search", params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
             if response.count > 0 {
                 for i in 0...response.count-1 {
@@ -37,8 +39,13 @@ class mStores {
                 } catch let error as NSError  {
                     print("Could not save \(error)")
                 }
+            
             }
+            
+            return completion(true)
+        
         }
+        
     }
     
     func read_stores() -> [Stores]? {

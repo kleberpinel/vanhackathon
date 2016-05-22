@@ -15,16 +15,12 @@ class Splash: UIViewController {
         super.viewDidLoad()
         
         let stores = mStores()
-        stores.populate_data()
-        
-        NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: #selector(Splash.goToMap), userInfo: nil, repeats: true)
-            
-    }
-    
-    func goToMap(){
-        dispatch_async(dispatch_get_main_queue()) {
-            self.performSegueWithIdentifier("transSplashToMap", sender: nil)
+        stores.populate_data() { (response) in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.performSegueWithIdentifier("transSplashToMap", sender: nil)
+            }
         }
+        
     }
     
 }

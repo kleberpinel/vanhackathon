@@ -64,7 +64,7 @@ public class Global {
 
 }
 
-// for image caching
+// Image caching
 class MyImageCache {
     
     static let sharedCache: NSCache = {
@@ -81,17 +81,11 @@ extension NSURL {
     
     typealias ImageCacheCompletion = UIImage -> Void
     
-    /// Retrieves a pre-cached image, or nil if it isn't cached.
-    /// You should call this before calling fetchImage.
     var cachedImage: UIImage? {
         return MyImageCache.sharedCache.objectForKey(
             absoluteString) as? UIImage
     }
     
-    /// Fetches the image from the network.
-    /// Stores it in the cache if successful.
-    /// Only calls completion on successful image download.
-    /// Completion is called on the main thread.
     func fetchImage(completion: ImageCacheCompletion) {
         let task = NSURLSession.sharedSession().dataTaskWithURL(self) {
             data, response, error in
