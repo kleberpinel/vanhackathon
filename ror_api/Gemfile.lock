@@ -40,6 +40,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     arel (6.0.3)
     builder (3.2.2)
     concurrent-ruby (1.0.2)
@@ -65,6 +66,8 @@ GEM
     multi_xml (0.5.5)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    normalize_url (0.0.6)
+      addressable (~> 2.3)
     pg (0.18.4)
     rack (1.6.4)
     rack-cors (0.2.9)
@@ -118,6 +121,7 @@ DEPENDENCIES
   active_model_serializers
   faker
   httparty
+  normalize_url
   pg
   rack-cors
   rails (= 4.2.5.1)
