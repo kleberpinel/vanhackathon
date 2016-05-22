@@ -57,24 +57,25 @@ class CrawlerService
 
           description = ""
           image_url = ""
-          topics = answer["RelatedTopics"]
-          if topics.present?
-            topic = topics[rand(0..answer["RelatedTopics"].size-1)]
-            description = topic["Text"] 
-            if topic["Icon"].present?
-              image_url = topic["Icon"]["URL"]
+          if answer.present? && answer["RelatedTopics"].present?
+            topics = answer["RelatedTopics"]
+            if topics.present?
+              topic = topics[rand(0..answer["RelatedTopics"].size-1)]
+              description = topic["Text"] 
+              if topic["Icon"].present?
+                image_url = topic["Icon"]["URL"]
+              end
             end
           else
             description = Faker::Company.catch_phrase + " " + Faker::Lorem.sentence
           end
-          product = {
+          Product.create({
             name: product_name,
             description: description,
             price: rand(1..10),
             image_url: image_url,
             merchant_id: merchant.id
-          }
-          Product.create(product)
+          })
           i += 1
         end
       end
