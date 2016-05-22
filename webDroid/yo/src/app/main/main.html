@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="search-box">
+        <input type="search" placeholder="What are you looking for today?" class="form-control col-md-12 search" ng-model="main.search">
+    </div>
+    <ui-gmap-google-map center='main.map.center' zoom='main.map.zoom' draggable="true">
+        <ui-gmap-marker ng-repeat="home in main.markers | filter: main.search" coords="{latitude: home.latitude, longitude: home.longitude}" idkey="home.id" icon="{url: home.icon}" type="cluster" events="main.clickEventsObject" click="main.onMarkerClicked">
+        </ui-gmap-marker>
+    </ui-gmap-google-map>
+    <div ng-show="main.showSide" class="side slidein slideout">
+        <a href="#" class="side-close" ng-click="main.closeSide()">
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
+        <h1>{{main.selectedShop.data.name}}</h1>
+        <h4>Adress: {{main.selectedShop.data.street}}</h4>
+        <p>City: {{main.selectedShop.data.city}}</p>
+        <p>Province: {{main.selectedShop.data.prov}}</p>
+        Products:
+        <div class="table table-responsive">
+            <div ng-repeat="prod in main.selectedShop.data.products">
+                <div class="col-md-4">{{prod.name}}</div>
+                <div class="col-md-12">Price: {{prod.price}}</div>                                
+                <button class="btn btn-success btn-block">Buy it!</button>
+            </div>
+        </div>
+    </div>
+</div>
