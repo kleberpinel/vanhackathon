@@ -12,14 +12,14 @@ import CoreData
 import SwiftyJSON
 import CoreLocation
 
-class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
+class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate, UITextFieldDelegate {
 
     // outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var viewFooter: UIView!
-    @IBOutlet weak var txtStoreName: UILabel!
+    @IBOutlet weak var lblStoreName: UILabel!
     @IBOutlet weak var starsRating: UIImageView!
     @IBOutlet weak var lblRating: UILabel!
     //
@@ -32,6 +32,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.txtSearch.delegate = self
         self.startLocationManager()
     }
     
@@ -89,11 +90,16 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
-            self.txtStoreName.text = self.stores![row].name
+            self.lblStoreName.text = self.stores![row].name
             self.lblRating.text = String(rating)
             self.starsRating.image = UIImage(named: "stars-\(floor(rating).format(0)).png")
         })
         
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     //
@@ -102,6 +108,8 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     
     @IBAction func btnSearchClick(sender: AnyObject) {
         if let search = self.txtSearch.text {
+            
+            self.view.endEditing(true)
             
             if search == "" {
                 return

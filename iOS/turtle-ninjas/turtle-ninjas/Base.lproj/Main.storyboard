@@ -211,10 +211,10 @@
                     <connections>
                         <outlet property="btnSearch" destination="jld-0O-Art" id="CIA-pk-Lrc"/>
                         <outlet property="lblRating" destination="MJE-dl-tlG" id="ZQ0-l3-HWd"/>
+                        <outlet property="lblStoreName" destination="cGP-fH-qXd" id="gEc-tD-6a0"/>
                         <outlet property="mapView" destination="Xxn-r9-CvI" id="FUO-WR-s0g"/>
                         <outlet property="starsRating" destination="kKP-O9-Ioa" id="BpC-FJ-7wf"/>
                         <outlet property="txtSearch" destination="PjQ-ip-1Ah" id="X6A-Vp-Sj1"/>
-                        <outlet property="txtStoreName" destination="cGP-fH-qXd" id="aCH-3w-bln"/>
                         <outlet property="viewFooter" destination="zBs-7C-Ox8" id="wW8-Vm-ahi"/>
                         <segue destination="naS-zd-QG3" kind="show" identifier="transMapToStore" animates="NO" id="ar3-Uc-xXR"/>
                     </connections>
