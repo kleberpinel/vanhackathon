@@ -93,15 +93,18 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     
     @IBAction func btnSearchClick(sender: AnyObject) {
     
-        if let _ = self.txtSearch.text {
+        if let search = self.txtSearch.text {
             
-            if self.txtSearch.text == "" {
+            if search == "" {
                 return
             }
             
-            let url = "\(self.global.base_url)"
-            self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
-        //        self.loadAnnotations(response)
+            let url = "\(self.global.base_url)/search"
+            self.global.request(url, params: ["q": search], headers: nil, type: HTTPTYPE.GET) { (response) in
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.mapView.removeAnnotations(self.mapView.annotations)
+                })
+                self.loadAnnotationsViaSearch(response)
             }
             
         }
@@ -138,11 +141,25 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         for i in 0...stores.count-1 {
             dispatch_async(dispatch_get_main_queue()) {
                 let anotation = CustomPointAnnotation()
-                 let location  = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
+                let location  = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
                 
                 anotation.tag = i
                 anotation.coordinate = location
-                    
+                
+                self.mapView.addAnnotation(anotation)
+            }
+        }
+    }
+    
+    private func loadAnnotationsViaSearch(stores: (JSON)) {
+        for i in 0...stores.count-1 {
+            dispatch_async(dispatch_get_main_queue()) {
+                let anotation = CustomPointAnnotation()
+                let location  = CLLocationCoordinate2D(latitude: stores[i]["latitude"].doubleValue, longitude: stores[i]["longitude"].doubleValue)
+                
+                anotation.tag = i
+                anotation.coordinate = location
+                
                 self.mapView.addAnnotation(anotation)
             }
         }
