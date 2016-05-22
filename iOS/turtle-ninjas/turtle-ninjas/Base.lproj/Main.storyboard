@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="naS-zd-QG3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oNF-Nx-Buo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Splash Screen-->
+        <scene sceneID="zGZ-PX-WpS">
+            <objects>
+                <viewController title="Splash Screen" id="oNF-Nx-Buo" customClass="Splash" customModule="turtle_ninjas" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kfu-bd-elW"/>
+                        <viewControllerLayoutGuide type="bottom" id="8m7-ic-uPI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8AT-6O-udR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="transSplashToMap" id="8b5-n7-fqZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3XE-dO-Mhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-328" y="1036"/>
+        </scene>
         <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -42,7 +63,7 @@
                                     <action selector="btnSearchClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RO8-HF-wnj"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBs-7C-Ox8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBs-7C-Ox8">
                                 <rect key="frame" x="0.0" y="530" width="600" height="70"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BTN-Buy" translatesAutoresizingMaskIntoConstraints="NO" id="hxh-Bl-cVS">
@@ -54,9 +75,13 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heirloom Vegetariam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGP-fH-qXd">
                                         <rect key="frame" x="69" y="16" width="449" height="21"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.1764705882352941" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="3dP-3q-jxB" appends="YES" id="2u9-0M-gyE"/>
+                                        </connections>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Store-icon" translatesAutoresizingMaskIntoConstraints="NO" id="9m4-kK-RPP">
                                         <rect key="frame" x="8" y="11" width="48" height="48"/>
@@ -67,6 +92,7 @@
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="cGP-fH-qXd" firstAttribute="top" secondItem="zBs-7C-Ox8" secondAttribute="top" constant="16" id="X3Z-Ws-xRg"/>
                                     <constraint firstAttribute="height" constant="70" id="X6P-oO-xdr"/>
@@ -75,6 +101,9 @@
                                     <constraint firstItem="9m4-kK-RPP" firstAttribute="leading" secondItem="zBs-7C-Ox8" secondAttribute="leading" constant="8" id="v8M-LZ-1H2"/>
                                     <constraint firstAttribute="bottom" secondItem="9m4-kK-RPP" secondAttribute="bottom" constant="11" id="zRX-4a-AQY"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="V7m-QM-lPI" appends="YES" id="mgf-Ki-Xly"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -106,8 +135,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="V7m-QM-lPI">
+                    <connections>
+                        <action selector="tapFooterView:" destination="BYZ-38-t0r" id="kHP-vO-TI7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3dP-3q-jxB">
+                    <connections>
+                        <action selector="tapFooterName:" destination="BYZ-38-t0r" id="gMC-aR-o46"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="515" y="902"/>
+            <point key="canvasLocation" x="501" y="1036"/>
         </scene>
         <!--Store-->
         <scene sceneID="Ji6-Zd-DiN">
@@ -318,4 +357,7 @@
         <image name="product-test" width="68" height="72"/>
         <image name="x-66" width="66" height="66"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8b5-n7-fqZ"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -8,10 +8,11 @@
 
 import UIKit
 import MapKit
+import CoreData
 import SwiftyJSON
 import CoreLocation
 
-class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
+class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFetchedResultsControllerDelegate  {
 
     // outlets
     @IBOutlet weak var mapView: MKMapView!
@@ -22,28 +23,26 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
     //
     
     let global = Global()
-    var manager = CLLocationManager()
+    var manager : CLLocationManager!
+    let stores = mStores().read_stores()
     
-    var store_json = JSON("")
     var selectedStore : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startLocationManager()
-        
-        let url = "\(self.global.base_url)"
-        self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
-            self.store_json = response
-            self.loadAnnotations(response)
-        }
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        self.loadAnnotations(stores!)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
      
         let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
@@ -88,8 +87,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
         self.selectedStore = sender!.view!.tag
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
-            print(sender!.view!.tag)
-            self.txtStoreName.text = self.store_json[sender!.view!.tag]["name"].stringValue
+            self.txtStoreName.text = self.stores![sender!.view!.tag].name
         })
     }
     
@@ -103,35 +101,45 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
             
             let url = "\(self.global.base_url)"
             self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
-                self.loadAnnotations(response)
+        //        self.loadAnnotations(response)
             }
             
         }
         
     }
     
+    @IBAction func tapFooterView(sender: AnyObject) {
+        self.goToStoreView()
+    }
+    
+    @IBAction func tapFooterName(sender: AnyObject) {
+        self.goToStoreView()
+    }
+    
+    func goToStoreView(){
+        dispatch_async(dispatch_get_main_queue()) {
+            self.performSegueWithIdentifier("transMapToStore", sender: nil)
+        }
+    }
+    
     //
     // mark : private functions
     //
     
-    private func loadAnnotations(stores: (JSON)) {
-        
-        for i in 1...stores.count {
-            
+    private func loadAnnotations(stores: [Stores]) {
+        for i in 0...stores.count-1 {
             dispatch_async(dispatch_get_main_queue()) {
                 let anotation = CustomPointAnnotation()
-                let location  = CLLocationCoordinate2D(latitude: stores[i]["latitude"].doubleValue, longitude: stores[i]["longitude"].doubleValue)
+                let location  = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
                 
                 anotation.tag = i
-                anotation.title = stores[i]["name"].stringValue
-                anotation.subtitle = stores[i]["street"].stringValue
+                anotation.title = stores[i].name
+                anotation.subtitle = stores[i].street
                 anotation.coordinate = location
                     
                 self.mapView.addAnnotation(anotation)
             }
-            
         }
-        
     }
     
     private func startLocationManager(){
@@ -141,6 +149,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate  {
         
         // Check whether or not GPS is turned on
         if (CLLocationManager.locationServicesEnabled()) {
+            manager = CLLocationManager()
             manager.delegate = self
             manager.desiredAccuracy = kCLLocationAccuracyBest
             manager.requestWhenInUseAuthorization()
