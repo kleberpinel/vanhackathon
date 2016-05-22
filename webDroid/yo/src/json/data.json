@@ -1,0 +1,5 @@
+[
+    { "id": 1, "icon":"../assets/images/Shopify-icon.png", "location": { "latitude": 49.265292, "longitude": -123.126226 } },
+    { "id": 2, "icon":"../assets/images/Shopify-icon.png", "location": { "latitude": 49.266292, "longitude": -123.136226 } },
+    { "id": 3, "icon":"../assets/images/Shopify-icon.png", "location": { "latitude": 49.267292, "longitude": -123.146226 } }
+]
