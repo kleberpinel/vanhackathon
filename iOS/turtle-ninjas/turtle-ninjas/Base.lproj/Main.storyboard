@@ -35,16 +35,44 @@
                                 <color key="textColor" red="0.1764705882352941" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8i-iU-Bl2">
+                                <rect key="frame" x="289" y="364" width="23" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="7RV-Vk-f63"/>
+                                    <constraint firstAttribute="height" constant="23" id="A5J-d5-KTz"/>
+                                </constraints>
+                                <state key="normal" image="refresh-icon"/>
+                                <connections>
+                                    <action selector="refreshIconClick:" destination="oNF-Nx-Buo" eventType="touchUpInside" id="DXC-dC-cD0"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your internet is not connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ni-RG-LBq">
+                                <rect key="frame" x="206" y="397" width="188" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="jtu-lb-aoM"/>
+                                    <constraint firstAttribute="width" constant="188" id="ykI-gO-zcO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.1764705882" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="l8i-iU-Bl2" firstAttribute="centerX" secondItem="8AT-6O-udR" secondAttribute="centerX" id="3bx-JO-ABe"/>
                             <constraint firstItem="3EG-iC-bcQ" firstAttribute="centerY" secondItem="8AT-6O-udR" secondAttribute="centerY" id="JXH-ey-hrY"/>
+                            <constraint firstItem="l8i-iU-Bl2" firstAttribute="top" secondItem="L4K-E1-QYW" secondAttribute="bottom" constant="8" id="NMF-8L-rDw"/>
                             <constraint firstItem="3EG-iC-bcQ" firstAttribute="centerX" secondItem="8AT-6O-udR" secondAttribute="centerX" id="aj0-Sa-B60"/>
                             <constraint firstItem="L4K-E1-QYW" firstAttribute="centerX" secondItem="8AT-6O-udR" secondAttribute="centerX" id="fZD-x8-Ly6"/>
+                            <constraint firstItem="4ni-RG-LBq" firstAttribute="top" secondItem="l8i-iU-Bl2" secondAttribute="bottom" constant="10" id="lam-ms-sNb"/>
+                            <constraint firstItem="4ni-RG-LBq" firstAttribute="centerX" secondItem="8AT-6O-udR" secondAttribute="centerX" id="qe9-ce-lyF"/>
                             <constraint firstItem="L4K-E1-QYW" firstAttribute="top" secondItem="3EG-iC-bcQ" secondAttribute="bottom" constant="2" id="toT-xp-hre"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="labelDescription" destination="L4K-E1-QYW" id="J1w-eL-K9f"/>
+                        <outlet property="labelInternetConnection" destination="4ni-RG-LBq" id="NX6-ab-igc"/>
+                        <outlet property="labelRefreshIcon" destination="l8i-iU-Bl2" id="9nr-lU-eMO"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="transSplashToMap" id="8b5-n7-fqZ"/>
                     </connections>
                 </viewController>
@@ -399,9 +427,10 @@
         <image name="minus" width="27" height="23"/>
         <image name="minus-more" width="40" height="23"/>
         <image name="plus" width="27" height="23"/>
+        <image name="refresh-icon" width="70" height="70"/>
         <image name="x-66" width="66" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jgK-lY-8Pm"/>
+        <segue reference="8b5-n7-fqZ"/>
     </inferredMetricsTieBreakers>
 </document>
