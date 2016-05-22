@@ -13,5 +13,8 @@ class StoreProducts: UITableViewCell {
     @IBOutlet weak var productAvatar: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productPrice: UILabel!
+    @IBOutlet weak var productQuantity: UILabel!
+    @IBOutlet weak var plusIcon: UIButton!
+    @IBOutlet weak var minusIcon: UIButton!
     
 }

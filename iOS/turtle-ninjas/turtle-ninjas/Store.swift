@@ -12,6 +12,11 @@ import Haneke
 import SwiftyJSON
 import CoreLocation
 
+enum CartManager {
+    case ADD
+    case DELETE
+}
+
 class Store: UIViewController {
     
     @IBOutlet weak var storeName: UILabel!
@@ -19,6 +24,7 @@ class Store: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var store_id : Int!
+    var indexPaths : [NSIndexPath] = []
     
     let global = Global()
     var products_json = JSON("")
@@ -35,12 +41,37 @@ class Store: UIViewController {
             })
         }
         
+        self.totalAmount.text = "0"
+        
     }
     
-    @IBAction func backButtonClick(sender: AnyObject) {
+    @IBAction func addItemToCart(sender: AnyObject) {
+        self.manageCart(CartManager.ADD, row: sender.tag)
     }
     
-    @IBAction func checkoutButtonClick(sender: AnyObject) {
+    @IBAction func removeItem(sender: AnyObject) {
+        self.manageCart(CartManager.DELETE, row: sender.tag)
+    }
+    
+    func manageCart(option: CartManager, row: Int){
+        
+        var quantity = 0
+        let cell = self.tableView.cellForRowAtIndexPath(indexPaths[row])! as! StoreProducts
+        let price = self.products_json["products"][row]["price"].floatValue
+        
+        if option == .ADD {
+            quantity = Int(cell.productQuantity.text!)! + 1
+            self.totalAmount.text = String(Float(totalAmount.text!)! + price)
+        } else {
+            if cell.productQuantity.text != "0" {
+                quantity = Int(cell.productQuantity.text!)! - 1
+                self.totalAmount.text = String(Float(totalAmount.text!)! - price)
+            }
+        }
+        
+        cell.productQuantity.text = String(quantity)
+        cell.productPrice.text = "$" + String(price * Float(quantity))
+        
     }
     
     //
@@ -62,15 +93,19 @@ class Store: UIViewController {
         let row = indexPath.row
         
         cell.productName.text = self.products_json["products"][row]["name"].stringValue
-        cell.productPrice.text = self.products_json["products"][row]["price"].stringValue
         
         if let avatarURL = NSURL(string: self.products_json["products"][row]["image_url"].stringValue) {
             cell.productAvatar.hnk_setImageFromURL(avatarURL, placeholder: nil, success: { (image) -> Void in
                 cell.productAvatar.image = image
             }, failure: { (error) -> Void in
-                
+                cell.productAvatar.image = nil
             })
         }
+        
+        cell.minusIcon.tag = row
+        cell.plusIcon.tag = row
+        
+        indexPaths.append(indexPath)
         
         return cell
         

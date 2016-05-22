@@ -20,7 +20,6 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var viewFooter: UIView!
     @IBOutlet weak var txtStoreName: UILabel!
-    @IBOutlet weak var txtScore: UILabel!
     //
     
     let global = Global()
@@ -89,7 +88,6 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
             self.txtStoreName.text = self.stores![sender!.view!.tag].name
-            self.txtScore.text = String(self.stores![sender!.view!.tag].rate_score)
         })
     }
     
@@ -114,14 +112,6 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     }
     
     @IBAction func tapFooterView(sender: AnyObject) {
-        self.goToStoreView()
-    }
-    
-    @IBAction func tapFooterName(sender: AnyObject) {
-        self.goToStoreView()
-    }
-    
-    func goToStoreView(){
         dispatch_async(dispatch_get_main_queue()) {
             self.performSegueWithIdentifier("transMapToStore", sender: nil)
         }
