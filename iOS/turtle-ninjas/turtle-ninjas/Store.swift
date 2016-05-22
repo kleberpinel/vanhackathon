@@ -18,16 +18,21 @@ class Store: UIViewController {
     @IBOutlet weak var totalAmount: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var store_id : Int!
+    
     let global = Global()
     var products_json = JSON("")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = "\(self.global.base_url)"
+        let url = "\(self.global.base_url)/merchants/\(store_id)"
         self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
             self.products_json = response
-            self.tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), {
+                self.storeName.text = response["name"].stringValue
+                self.tableView.reloadData()
+            })
         }
         
     }
@@ -47,8 +52,7 @@ class Store: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.products_json.count
-        return 1
+        return self.products_json.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -57,10 +61,10 @@ class Store: UIViewController {
         
         let row = indexPath.row
         
-    //    cell.productName.text = self.products_json[row]["productName"].stringValue
-    //    cell.productPrice.text = self.products_json[row]["productPrice"].stringValue
+        cell.productName.text = self.products_json["products"][row]["name"].stringValue
+        cell.productPrice.text = self.products_json["products"][row]["price"].stringValue
         
-        if let avatarURL = NSURL(string: self.products_json[row]["avatarURL"].stringValue) {
+        if let avatarURL = NSURL(string: self.products_json["products"][row]["image_url"].stringValue) {
             cell.productAvatar.hnk_setImageFromURL(avatarURL, placeholder: nil, success: { (image) -> Void in
                 cell.productAvatar.image = image
             }, failure: { (error) -> Void in

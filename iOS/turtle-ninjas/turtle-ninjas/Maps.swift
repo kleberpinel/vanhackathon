@@ -20,6 +20,7 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var viewFooter: UIView!
     @IBOutlet weak var txtStoreName: UILabel!
+    @IBOutlet weak var txtScore: UILabel!
     //
     
     let global = Global()
@@ -84,24 +85,28 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
     }
     
     func showFooter(sender: UITapGestureRecognizer? = nil) {
-        self.selectedStore = sender!.view!.tag
+        self.selectedStore = Int(self.stores![sender!.view!.tag].id)
         dispatch_async(dispatch_get_main_queue(), {
             self.viewFooter.hidden = false
             self.txtStoreName.text = self.stores![sender!.view!.tag].name
+            self.txtScore.text = String(self.stores![sender!.view!.tag].rate_score)
         })
     }
     
     @IBAction func btnSearchClick(sender: AnyObject) {
     
-        if let _ = self.txtSearch.text {
+        if let search = self.txtSearch.text {
             
-            if self.txtSearch.text == "" {
+            if search == "" {
                 return
             }
             
-            let url = "\(self.global.base_url)"
-            self.global.request(url, params: nil, headers: nil, type: HTTPTYPE.GET) { (response) in
-        //        self.loadAnnotations(response)
+            let url = "\(self.global.base_url)/search"
+            self.global.request(url, params: ["q": search], headers: nil, type: HTTPTYPE.GET) { (response) in
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.mapView.removeAnnotations(self.mapView.annotations)
+                })
+                self.loadAnnotationsViaSearch(response)
             }
             
         }
@@ -122,6 +127,14 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender:AnyObject?){
+        if (segue.identifier=="transMapToStore"){
+            if let vc = segue.destinationViewController as? Store {
+                vc.store_id = self.selectedStore
+            }
+        }
+    }
+    
     //
     // mark : private functions
     //
@@ -133,10 +146,22 @@ class Maps: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, NSFe
                 let location  = CLLocationCoordinate2D(latitude: stores[i].latitude, longitude: stores[i].longitude)
                 
                 anotation.tag = i
-                anotation.title = stores[i].name
-                anotation.subtitle = stores[i].street
                 anotation.coordinate = location
-                    
+                
+                self.mapView.addAnnotation(anotation)
+            }
+        }
+    }
+    
+    private func loadAnnotationsViaSearch(stores: (JSON)) {
+        for i in 0...stores.count-1 {
+            dispatch_async(dispatch_get_main_queue()) {
+                let anotation = CustomPointAnnotation()
+                let location  = CLLocationCoordinate2D(latitude: stores[i]["latitude"].doubleValue, longitude: stores[i]["longitude"].doubleValue)
+                
+                anotation.tag = i
+                anotation.coordinate = location
+                
                 self.mapView.addAnnotation(anotation)
             }
         }
