@@ -7,5 +7,6 @@ FactoryGirl.define do
     longitude Faker::Number.decimal(2)
     prov "Britsh Columbia"
     category "Bike"
+    
   end
 end
