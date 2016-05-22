@@ -286,12 +286,12 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLK-8D-R6m">
-                                <rect key="frame" x="490" y="484" width="90" height="21"/>
+                                <rect key="frame" x="438" y="484" width="142" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="4Mu-r3-Gyd"/>
+                                    <constraint firstAttribute="width" constant="142" id="4Mu-r3-Gyd"/>
                                     <constraint firstAttribute="height" constant="21" id="KZD-Op-cQb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.38431372549019605" green="0.38431372549019605" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

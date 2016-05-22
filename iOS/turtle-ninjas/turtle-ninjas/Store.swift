@@ -19,6 +19,7 @@ enum CartManager {
 struct CartData {
     var indexPaths = [Int: NSIndexPath]()
     var items = [Int: String]()
+    var totalAmount : Float = 0.0
 }
 
 class Store: UIViewController {
@@ -60,11 +61,13 @@ class Store: UIViewController {
         
         if option == .ADD {
             quantity = Int(cell.productQuantity.text!)! + 1
-            self.totalAmount.text = (Float(totalAmount.text!)! + price).format(2)
+            cartData.totalAmount = cartData.totalAmount + price
+            self.totalAmount.text = "CAD $" + (cartData.totalAmount).format(2)
         } else {
             if cell.productQuantity.text != "0" {
                 quantity = Int(cell.productQuantity.text!)! - 1
-                self.totalAmount.text = (Float(totalAmount.text!)! - price).format(2)
+                cartData.totalAmount = cartData.totalAmount - price
+                self.totalAmount.text = "CAD $" + (cartData.totalAmount).format(2)
             }
         }
         
