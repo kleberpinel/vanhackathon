@@ -14,10 +14,10 @@ class ProductSerializer < ActiveModel::Serializer
       "http://icons.iconarchive.com/icons/icons8/windows-8/512/Cinema-Ninja-Turtle-icon.png",
       "http://www.thinkgeek.com/images/blog/2012pumpkin-20-icon.jpg"
     ]
-    if object.image_url == ""
+    # if object.image_url == ""
       turtles_icon[rand(0..turtles_icon.size-1)]
-    else
-      object.image_url
-    end
+    # else
+    #   object.image_url
+    # end
   end
 end
